@@ -1,0 +1,39 @@
+body {
+	width: 400px;
+}
+.padding-off {
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.border-off {
+	border : 0px;
+}
+.margin-off {
+	margin-bottom: 0px;
+}
+.panel-footer:hover {
+	background-color: #dcdcdc;
+}
+.click-area {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	height: 30px;
+	width: 100%;
+}
+.carousel-indicators {
+	bottom: initial;
+	top: 0px;
+}
+.carousel-inner > .item {
+	padding-top: 20px;
+	padding-left: 30px;
+	height: 250px;
+}
+
+.carousel-control.left {
+  background-image:initial;
+}
+.carousel-control.right {
+  background-image:initial;
+}

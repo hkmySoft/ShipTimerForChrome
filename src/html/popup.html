@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<!-- Meta Tag -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Style Sheet Library -->
+	<link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Style Sheet -->
+	<link href="../css/popup.css" rel="stylesheet">
+	<!-- JavaScript File Library -->
+	<script src="../lib/jquery.min.js"></script>
+	<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../lib/oauth2/oauth2.js" charset="UTF-8"></script>
+	<script src="../lib/aws-sdk-2.0.0-rc13.min.js" charset="UTF-8"></script>
+	<!-- JavaScript File -->
+	<script src="../js/constants.js" charset="UTF-8"></script>
+	<script src="../js/util.js" charset="UTF-8"></script>
+	<script src="../js/apns.js" charset="UTF-8"></script>
+	<script src="../js/popup.js" charset="UTF-8"></script>
+	<!-- Eec.. -->
+	<title>iPhone版 艦これタイマー連携ツール Beta</title>
+</head>
+<body>
+	<div>
+		<div class="col-sm-12 padding-off">
+			<div class="panel panel-primary border-off margin-off">
+				<div class="panel-heading">
+					<ul class="media-list margin-off">
+						<li class="media">
+							<div class="pull-right" href="#">
+								<img class="media-object" src="../img/ikari.png">
+							</div>
+							<div class="media-body">
+								<h3 class="panel-title media-heading">艦これタイマー連携ツール β</h3>
+							</div>
+						</li>
+					</ul>
+   				</div>
+				<div class="panel-body">
+					<div role="form" id="deviceForm">
+						<div class="form-group">
+							<div clas="row"><label for="inputDeviceId">iPhone</label>　<button id="deviceReleaseBtn" data-loading-text="解除中..." class="btn btn-danger btn-xs hide">解除</buton></div>
+							<fieldset id="inputDeviceIdField">
+								<div class="input-group">
+										<input type="text" class="form-control" id="inputDeviceId" placeholder="取得したIDを入力してください。例：eb6...3ed6" autocomplete="off">
+										<span class="input-group-btn">
+											<button id="deviceRegistBtn" data-loading-text="登録中" data-error-text="エラー" class="btn btn-primary">　登録　</buton>
+											<button id="disableBtn" class="btn btn-success hide">登録済</buton>
+										</span>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer padding-off">
+					<div class="click-area" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+						<div class="col-sm-12">使用方法 <span class="caret"></span></div>
+					</div>
+					<div id="collapseThree" class="collapse">
+						<div id="carousel-captions" class="carousel slide" data-ride="carousel" data-interval="false">
+							<ol class="carousel-indicators">
+								<li data-target="#carousel-captions" data-slide-to="0" class="active"></li>
+								<li data-target="#carousel-captions" data-slide-to="1"></li>
+								<li data-target="#carousel-captions" data-slide-to="2"></li>
+							</ol>
+							<div class="carousel-inner">
+								<div class="item active">
+									<!-- <img data-src="" alt="First slide image"> -->
+									<h3>First slide label</h3>
+									<h3>First slide label</h3>
+								</div>
+								<div class="item">
+									<!-- <img data-src="" alt="Second slide image"> -->
+									<h3>Second slide label</h3>
+								</div>
+								<div class="item">
+									<!-- <img data-src="" alt="Third slide image"> -->
+									<h7>Third slide label</h7>
+								</div>
+							</div>
+							<a class="left carousel-control" href="#carousel-captions" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left"></span>
+							</a>
+							<a class="right carousel-control" href="#carousel-captions" data-slide="next">
+								<span class="glyphicon glyphicon-chevron-right"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
