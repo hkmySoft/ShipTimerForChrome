@@ -26,11 +26,6 @@ var config = {
 		// 値の存在チェック
 		if (typeof deviceId != 'undefined') {
 			
-			// == ID入力エリア ==
-			var inpuutArea = $('#inputDeviceId');
-			// 値を設定する
-			inpuutArea.val(deviceId);
-			
 			// == 登録ボタン ==
 			var saveBtn = $('#deviceRegistBtn');
 			// "登録"ボタンを非表示にする
@@ -69,26 +64,14 @@ var config = {
 
 // 登録ボタン押下処理
 $('#deviceRegistBtn').click(function() {
-	// ボタンを"登録中"に変更
+	// ボタンを"認証中"に変更
 	var btn = $(this);
 	btn.button('loading');
-	
-	// 入力されたデバイスIDを取得する
-	var device = $('#inputDeviceId').val();
-	// 入力値のチェック
-	// エンドポイントのチェック
-	if(typeof device == 'undefined' || device == null || device.length == 0) {
-		alert("IDを入力してください。");
-		btn.button('reset');
-		return;
-	}
-	if(device.match(/\W+/)) {
-		alert("半角英数字で入力してください。");
-		btn.button('reset');
-		return;
-	}
+	btn.removeClass('btn-danger');
+	btn.addClass('btn-success');
+
 	// デバイスIDをローカルに保存
-	localStorage[Constants.Strage.LOCAL_DEVICE_ID] = device;
+	localStorage[Constants.Strage.LOCAL_DEVICE_ID] = "eb2f641e648ea7700a3440c4f4d0b3fa359f61379a9ad983c2eccc70a1703ed6";
 	
 
 	// == 認証関連 ==
@@ -108,9 +91,7 @@ $('#deviceRegistBtn').click(function() {
 		}
 		
 		// デバイス登録処理を実施
-		var apns = new ShipTimer.Apns();
-		apns.createSettingMessage();
-		apns.forStart(afterRegistButton.bind(this, btn));		
+		settingDevice(btn);
 		
 		
 	}.bind(this), popOuathFlg);	
@@ -159,6 +140,17 @@ $('#deviceReleaseBtn').click(function() {
 });
 
 
+// デバイス登録処理
+function settingDevice(arg1) {
+	var btn = arg1;
+
+	// エンドポイント作成&登録メッセージ送信処理を実施
+	var apns = new ShipTimer.Apns();
+	apns.createSettingMessage();
+	apns.forStart(afterRegistButton.bind(this, btn));
+
+}
+
 // 登録ボタン押下後コールバック
 function afterRegistButton(arg1) {
 	var btn = arg1;
@@ -169,12 +161,12 @@ function afterRegistButton(arg1) {
 			// "登録"ボタンを"エラー"にする
 			btn.button('error');
 			// 赤色に変更
-			btn.removeClass('btn-primary');
+			btn.removeClass('btn-success');
 			btn.addClass('btn-danger');
 			
 			// デバイスエラー
 			Util.badge.Device_Error();
-			alert("入力されたIDが間違っている可能性があります。");
+			alert("設定されたGoogleアカウントにiPhone版艦これタイマーの登録がありません。");
 	} else {
 			// "登録"ボタンを非表示にする
 			btn.addClass('hide');

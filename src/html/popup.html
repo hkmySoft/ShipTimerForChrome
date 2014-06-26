@@ -43,14 +43,9 @@
 					<div role="form" id="deviceForm">
 						<div class="form-group">
 							<div clas="row"><label for="inputDeviceId">iPhone</label>　<button id="deviceReleaseBtn" data-loading-text="解除中..." class="btn btn-danger btn-xs hide">解除</buton></div>
-							<fieldset id="inputDeviceIdField">
-								<div class="input-group">
-										<input type="text" class="form-control" id="inputDeviceId" placeholder="取得したIDを入力してください。例：eb6...3ed6" autocomplete="off">
-										<span class="input-group-btn">
-											<button id="deviceRegistBtn" data-loading-text="登録中" data-error-text="エラー" class="btn btn-primary">　登録　</buton>
-											<button id="disableBtn" class="btn btn-success hide">登録済</buton>
-										</span>
-								</div>
+							<fieldset id="inputDeviceIdField" class="fieldset-plus">
+								<button id="deviceRegistBtn" data-loading-text="認証中..." data-error-text="認証失敗" class="btn btn-success btn-block">開始</buton>
+								<button id="disableBtn" class="btn btn-info btn-block hide">起動中</buton>
 							</fieldset>
 						</div>
 					</div>
