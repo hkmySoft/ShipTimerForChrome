@@ -1,29 +1,30 @@
 ![icon](src/img/icon128.png)
-# iPhone版艦これタイマー連携ツール 
+## iPhone版艦これタイマー連携ツール 
 艦これタイマー連携ツールは  
 iPhone版「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id684642180?l=ja&ls=1&mt=8)」に  
 遠征時間を自動セットするChrome拡張です  
 
-# 使い方
-インストールはこちらから。※まだ未公開
+## 使い方
 
+
+***
+インストールはこちらから。※まだ未公開  
 [Chrome ウェブストア - iPhone版艦これタイマー連携ツール]()
 
-ちなみにiPhone版艦これタイマーはこちらから。
-
+iPhone版艦これタイマーはこちらから。  
 [AppStore - 艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id684642180?l=ja&ls=1&mt=8)
 
 
 
 
 
-# 機能
+## 機能
 - 機能概要
     - 遠征のタイマーを自動で取得し、iPhone版艦これタイマーに自動で設定してくれます
     - (iPhone版艦これタイマーが)完了時間を通知します
 
 
-# よくある質問
+## よくある質問
 
 - これは何ですか？
     - iPhoneアプリの艦これサポートツール「艦これタイマー」のサポートツールです。（これもうわかんねーな）
@@ -51,7 +52,7 @@ iPhone版「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id
 - その他頂いている機能改善やバグ報告など
     - [issues/question/open](https://github.com/hkmySoft/ShipTimeForChrome/issues) 
 
-# お問い合わせ/機能要望/バグ報告
+## お問い合わせ/機能要望/バグ報告
 - Twitterから
     - [twitter.com/Kozeni_50yen](https://twitter.com/Kozeni_50yen)
 - GitHubから
