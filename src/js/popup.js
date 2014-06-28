@@ -70,9 +70,6 @@ $('#deviceRegistBtn').click(function() {
 	btn.removeClass('btn-danger');
 	btn.addClass('btn-success');
 
-	// デバイスIDをローカルに保存
-	localStorage[Constants.Strage.LOCAL_DEVICE_ID] = "eb2f641e648ea7700a3440c4f4d0b3fa359f61379a9ad983c2eccc70a1703ed6";
-	
 
 	// == 認証関連 ==
 	// 認証状態取得(Google認証画面の表示必要有無) 認証済(認証画面を非表示):false 未認証(認証画面を表示):true
@@ -89,10 +86,12 @@ $('#deviceRegistBtn').click(function() {
 			// ローカルストレージにOKを格納
 			localStorage[Constants.Strage.OAUTH_COMP_KEY] = "OK";
 		}
+		// アクセストークンを取得
+		var access_token = google.getAccessToken();
 		
-		// デバイス登録処理を実施
-		settingDevice(btn);
-		
+		// 端末のデバイスIDを取得し、登録処理を行う
+		var dynm = new ShipTimer.Dynm(access_token);
+		dynm.getDeviceId(settingDevice.bind(this, btn));
 		
 	}.bind(this), popOuathFlg);	
 
@@ -166,7 +165,7 @@ function afterRegistButton(arg1) {
 			
 			// デバイスエラー
 			Util.badge.Device_Error();
-			alert("設定されたGoogleアカウントにiPhone版艦これタイマーの登録がありません。");
+			alert(Constants.Hanyou.DEVICE_ERR_MESSAGE);
 	} else {
 			// "登録"ボタンを非表示にする
 			btn.addClass('hide');

@@ -18,7 +18,7 @@ var ShipTimer = ShipTimer || {};
 	
 	/**
 	 * 端末のエンドポイントを作成する
-     * @param {Object} callback
+	 * @param {Object} callback
 	 * @returns {*}
 	 * @private
 	*/
@@ -58,8 +58,8 @@ var ShipTimer = ShipTimer || {};
 	
 	/**
 	 * メッセージを送信する
-     * @param {Object} endpointArn
-     * @param {Object} callback
+	 * @param {Object} endpointArn
+	 * @param {Object} callback
 	 * @returns {*}
 	 * @private
 	*/
@@ -124,7 +124,7 @@ var ShipTimer = ShipTimer || {};
 	/**
 	 * メッセージ処理の開始
 	 * @returns {*}
-     * @param {Object} callback
+	 * @param {Object} callback
 	 * @public
 	*/
 	Apns.prototype.forStart = function (callback) {
@@ -163,7 +163,7 @@ var ShipTimer = ShipTimer || {};
 	/**
 	 * デバイス解除処理の開始
 	 * @returns {*}
-     * @param {Object} callback
+	 * @param {Object} callback
 	 * @public
 	*/
 	Apns.prototype.forDeleteStart = function (callback) {
