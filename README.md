@@ -1,6 +1,7 @@
 ![icon](src/img/icon128.png)
 # iPhone版艦これタイマー連携ツール 
-艦これタイマー連携ツールはiPhone版「艦これタイマー」に  
+艦これタイマー連携ツールは  
+iPhone版「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id684642180?l=ja&ls=1&mt=8)」に  
 遠征時間を自動セットするChrome拡張です  
 
 # 使い方
