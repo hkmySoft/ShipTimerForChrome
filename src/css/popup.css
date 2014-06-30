@@ -12,6 +12,9 @@ body {
 .margin-off {
 	margin-bottom: 0px;
 }
+.margin-top-add {
+	margin-top: 10px;
+}
 .panel-footer:hover {
 	background-color: #dcdcdc;
 }

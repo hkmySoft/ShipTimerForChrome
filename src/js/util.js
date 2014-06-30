@@ -37,4 +37,17 @@ var Util = Util || {};
 			chrome.browserAction.setBadgeBackgroundColor({color:color});
 		}
 	};
+	/**
+	 * 艦これゲーム画面表示
+	 */
+	Util.openSTWindow = function(){
+		chrome.windows.create({
+			url: Constants.StWin.KANCOLLE + Constants.StWin.SUFFIX,
+			width:  Constants.StWin.WIDTH,
+			height: Constants.StWin.HEIGHT,
+			left: Constants.StWin.LEFT,
+			top: Constants.StWin.TOP,
+			type: Constants.StWin.TYPE
+		},function(window){});
+	};
 })();

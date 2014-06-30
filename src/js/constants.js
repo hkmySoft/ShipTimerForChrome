@@ -8,6 +8,16 @@ var Constants = {
 		OAUTH_ERR_TOOL_TIP: "クリックしてGoogleとの連携を許可してください",
 		DEVICE_ERR_TOOL_TIP: "iPhoneを登録してください。",
 		DEVICE_ERR_MESSAGE: "iPhoneの認証に失敗しました。\n先にiPhone版「艦これタイマー」で\n登録を行ってください。\nまたは、下記の「使用方法」をご参照下さい。",
+		MAX_REPEAT: 10,
+	},
+	StWin : {
+		KANCOLLE: "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/",
+		SUFFIX: "?shiptimer=true",
+		WIDTH: 800,
+		HEIGHT: 480,
+		TOP: 50,
+		LEFT: 50,
+		TYPE: 'popup'
 	},
 	Strage : {
 		OAUTH_COMP_KEY: "OAuth_Complete",

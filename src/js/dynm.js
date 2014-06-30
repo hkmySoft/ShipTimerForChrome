@@ -46,8 +46,8 @@ var ShipTimer = ShipTimer || {};
 						Key : {user_Id : {S:this.user_id}}
 					},
 					function(response,data){
-						if(typeof missionId != "undefined"){
-							this.device_id = data.Item.device_id.S;
+						if(typeof data != "undefined"){
+							this.device_id = data.Item.device_Id.S;
 							// デバイスIDをローカルに保存
 							localStorage[Constants.Strage.LOCAL_DEVICE_ID] = this.device_id;
 						}

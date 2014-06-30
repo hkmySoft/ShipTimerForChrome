@@ -34,7 +34,26 @@
 			"matches": ["http://www.google.com/robots.txt*"],
 			"js": ["src/lib/oauth2/oauth2_inject.js"],
 				"run_at": "document_start"
+		},
+		{
+			"matches" : [
+				"http://osapi.dmm.com/gadgets/ifr?*"
+			],
+			"js" : [
+				"src/lib/jquery.min.js",
+				"src/js/constants.js",
+				"src/js/embed.js"
+			]
+		},
+		{
+			"matches" : [
+				"http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/?shiptimer=true*"
+			],
+			"js" : [
+                "src/js/transfer.js"
+			]
 		}
+
 	],
 	"web_accessible_resources" : [
 		"src/lib/oauth2/oauth2.html"
