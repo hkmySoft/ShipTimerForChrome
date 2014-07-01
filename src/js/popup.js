@@ -31,13 +31,18 @@ var config = {
 			// "登録"ボタンを非表示にする
 			saveBtn.addClass('hide');
 
-			// == 登録済ボタン ==
-			var sumiBtn = $('#disableBtn');
-			// 登録済みボタンを表示する
-			sumiBtn.removeClass('hide');
-			
-			// フィールドを非活性化する
-			$('#inputDeviceIdField').attr('disabled', 'disabled');
+			// == 起動中&待機中ボタン ==
+			// 状態フラグを取得
+			var mFlg = (localStorage[Constants.Strage.MONITOR_FLG] == "ON") ? true : false;
+			if(mFlg){
+				var tmpBtn = $('#monitorBtn');
+				// 起動中ボタンを表示する
+				tmpBtn.removeClass('hide');
+			} else {
+				var tmpBtn = $('#waitMonitorBtn');
+				// 待機中ボタンを表示する
+				tmpBtn.removeClass('hide');
+			}
 			
 			// 解除ボタンを表示する
 			$('#deviceReleaseBtn').removeClass('hide');
@@ -95,6 +100,26 @@ $('#deviceRegistBtn').click(function() {
 		
 	}.bind(this), popOuathFlg);	
 
+});
+
+// 起動中ボタン押下処理
+$('#monitorBtn').click(function() {
+	// 起動中ボタンを非表示にする
+	$('#monitorBtn').addClass('hide');
+	// 待機中ボタンを表示にする
+	$('#waitMonitorBtn').removeClass('hide');
+	// 起動中フラグをOFFにする
+	localStorage[Constants.Strage.MONITOR_FLG] = "OFF";
+});
+
+// 待機中ボタン押下処理
+$('#waitMonitorBtn').click(function() {
+	// 起動中ボタンを表示にする
+	$('#monitorBtn').removeClass('hide');
+	// 待機中ボタンを非表示にする
+	$('#waitMonitorBtn').addClass('hide');
+	// 起動中フラグをONにする
+	localStorage[Constants.Strage.MONITOR_FLG] = "ON";
 });
 
 // ウィンドウ起動ボタン押下処理
@@ -175,8 +200,10 @@ function afterRegistButton(arg1) {
 			// "登録"ボタンを非表示にする
 			btn.addClass('hide');
 			
-			// 登録済みボタンを表示する
-			$('#disableBtn').removeClass('hide');
+			// 起動中ボタンを表示する
+			$('#monitorBtn').removeClass('hide');
+			// 起動中フラグをONにする
+			localStorage[Constants.Strage.MONITOR_FLG] = "ON";
 			
 			// 解除ボタンを表示する
 			$('#deviceReleaseBtn').removeClass('hide');
@@ -185,8 +212,6 @@ function afterRegistButton(arg1) {
 			// AWSの認証をOKとする
 			localStorage[Constants.Strage.AWS_SNS_COMP_KEY] = "OK";
 
-			// フィールドを非活性化する
-			$('#inputDeviceIdField').attr('disabled', 'disabled');
 			
 			// バッジを消す
 			Util.badge.clear();
@@ -200,8 +225,12 @@ function afterReleaseButton(arg1) {
 	$('#deviceRegistBtn').removeClass('hide');
 	$('#deviceRegistBtn').button('reset');
 	
-	// 登録済みボタンを非表示にする
-	$('#disableBtn').addClass('hide');
+	// 起動中ボタンを非表示にする
+	$('#monitorBtn').addClass('hide');
+	// 待機中ボタンを非表示にする
+	$('#waitMonitorBtn').addClass('hide');
+	// 起動中フラグをOFFにする
+	localStorage[Constants.Strage.MONITOR_FLG] = "OFF";
 	
 	// 解除ボタンを非表示にする
 	btn.addClass('hide');
@@ -210,9 +239,7 @@ function afterReleaseButton(arg1) {
 	localStorage.removeItem(Constants.Strage.AWS_SNS_COMP_KEY);
 	localStorage.removeItem(Constants.Strage.LOCAL_DEVICE_ID);
 
-	// フィールドを活性化する
-	$('#inputDeviceIdField').removeAttr('disabled');
-	
+
 	// デバイスエラー
 	Util.badge.Device_Error();
 	

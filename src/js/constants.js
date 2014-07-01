@@ -22,6 +22,7 @@ var Constants = {
 	Strage : {
 		OAUTH_COMP_KEY: "OAuth_Complete",
 		AWS_SNS_COMP_KEY: "AwsSNS_Complete",
+		MONITOR_FLG: "Monitor_Flg",
 		LOCAL_DEVICE_ID: "AwsSNS_Device_ID",
 		LOCAL_ENDPOINT: "AwsSNS_End_Point"
 	},
