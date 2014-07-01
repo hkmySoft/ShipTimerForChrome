@@ -41,8 +41,6 @@ var config = {
 			
 			// 解除ボタンを表示する
 			$('#deviceReleaseBtn').removeClass('hide');
-			// 起動ボタンを表示する
-			$('#shipTimerWindow').removeClass('hide');
 
 		}
 	} else {
@@ -183,8 +181,6 @@ function afterRegistButton(arg1) {
 			// 解除ボタンを表示する
 			$('#deviceReleaseBtn').removeClass('hide');
 			$('#deviceReleaseBtn').button('reset');
-			// 起動ボタンを表示する
-			$('#shipTimerWindow').removeClass('hide');
 			
 			// AWSの認証をOKとする
 			localStorage[Constants.Strage.AWS_SNS_COMP_KEY] = "OK";
@@ -210,9 +206,6 @@ function afterReleaseButton(arg1) {
 	// 解除ボタンを非表示にする
 	btn.addClass('hide');
 
-	// 起動ボタンを非表示にする
-	$('#shipTimerWindow').addClass('hide');
-	
 	// AWSの認証を削除する
 	localStorage.removeItem(Constants.Strage.AWS_SNS_COMP_KEY);
 	localStorage.removeItem(Constants.Strage.LOCAL_DEVICE_ID);

@@ -13,11 +13,11 @@ var Constants = {
 	StWin : {
 		KANCOLLE: "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/",
 		SUFFIX: "?shiptimer=true",
-		WIDTH: 800,
-		HEIGHT: 480,
+		WIDTH: 765,
+		HEIGHT: 560,
 		TOP: 50,
 		LEFT: 50,
-		TYPE: 'popup'
+		TYPE: 'normal'
 	},
 	Strage : {
 		OAUTH_COMP_KEY: "OAuth_Complete",

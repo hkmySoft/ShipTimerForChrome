@@ -40,7 +40,7 @@ $(function(){
 			// 限界数超えて実行
 			count = count + 1;
 			if(count >= Constants.Hanyou.MAX_REPEAT) {
-				alert('エラー。再実行して見てください。');
+				alert('エラー。再実行してみてください。');
 				window.close();
 				return;
 			}
@@ -91,7 +91,12 @@ $(function(){
 		// リサイズ時への登録
 		$(window).resize(onResize);
 	};
-
+	
+	// favicon設定
+	$('<link/>').attr({
+		rel : 'shortcut icon',
+		href: 'https://raw.github.com/hkmySoft/ShipTimerForChrome/master/src/img/dmm.ico'
+	}).appendTo('head');
 
 	// embed要素取得処理初回起動
 	setTimeout(getFlash, 1000);
