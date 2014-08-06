@@ -27,15 +27,15 @@ var Constants = {
 		LOCAL_ENDPOINT: "AwsSNS_End_Point"
 	},
 	AwsConst : {
-		CONFIG_REGION: 'us-west-2',
+		CONFIG_REGION: 'us-east-1',
 		IAM_ROLE: "arn:aws:iam::348287904183:role/KanColleRole",
-		PLAT_APP : "arn:aws:sns:us-west-2:348287904183:app/APNS_SANDBOX/SNSApp",
+		PLAT_APP : "arn:aws:sns:us-east-1:348287904183:app/APNS_SANDBOX/ShipTimer_SANDBOX",
 		APS_NAME : "APNS_SANDBOX",
 		DB_TABLE : "DevTokTbl"
 	},
 	OAuthConst : {
-		CLIENT_ID: "798349771072.apps.googleusercontent.com",
-		CLIENT_SECRET: "Gt2OU6a8M8h7v5CxSFXyVATS",
+		CLIENT_ID: "596857451248-ink6lpctnh0h6h2ttkoljvp7punvij1n.apps.googleusercontent.com",
+		CLIENT_SECRET: "47vDh2PG73aaFXM7Ir8zuODw",
 		API_SCOPE : "https://www.googleapis.com/auth/userinfo.profile",
 		XML_URL : "https://www.googleapis.com/oauth2/v1/tokeninfo"
 	}

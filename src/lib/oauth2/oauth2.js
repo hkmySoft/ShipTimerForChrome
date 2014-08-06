@@ -98,9 +98,32 @@ OAuth2.prototype.openAuthorizationCodePopup = function(callback, flg) {
   window['oauth-callback'] = callback;
 
   // Create a new tab with the OAuth 2.0 prompt
-  chrome.tabs.create({url: this.adapter.authorizationCodeURL(this.getConfig()), selected:flg},
-  function(tab) {
-    // 1. user grants permission for the application to access the OAuth 2.0
+  var crwWidth = 0;
+  var crwHeight = 0;
+  var crwLeft = 0;
+  var crwTop = 0;
+
+  if (flg) {
+    crwWidth = 500;
+    crwHeight = 500;
+    crwLeft = (screen.availWidth - crwWidth) / 2;
+    crwTop = (screen.availHeight - crwHeight) / 2;
+  } else {
+    crwWidth = 1;
+    crwHeight = 1;
+    crwLeft = 0;
+    crwTop = 0;
+  }
+
+  chrome.windows.create({
+      width: crwWidth,
+      height: crwHeight,
+      left: crwLeft,
+      top: crwTop,
+      focused: flg,
+      url: this.adapter.authorizationCodeURL(this.getConfig()),
+      type: 'popup'
+  }, function(window) {    // 1. user grants permission for the application to access the OAuth 2.0
     // endpoint
     // 2. the endpoint redirects to the redirect URL.
     // 3. the extension injects a script into that redirect URL
@@ -212,8 +235,9 @@ OAuth2.prototype.finishAuth = function() {
 
     // Once we get here, close the current tab and we're good to go.
     // The following works around bug: crbug.com/84201
-    window.open('', '_self', '');
-    window.close();
+    chrome.tabs.getSelected(null, function(tab){
+      chrome.windows.remove(tab.windowId, function (){});
+    });
   }
 
   try {
