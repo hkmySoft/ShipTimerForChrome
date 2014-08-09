@@ -9,11 +9,20 @@ body {
 .border-off {
 	border : 0px;
 }
+.padding-b-off {
+	padding-bottom: 0px;
+}
 .margin-off {
 	margin-bottom: 0px;
 }
 .margin-top-add {
 	margin-top: 10px;
+}
+.margin-top-addm {
+	margin-top: 5px;
+}
+.cursor-point {
+	cursor: pointer;
 }
 .panel-footer:hover {
 	background-color: #dcdcdc;

@@ -99,25 +99,32 @@ var ShipTimer = ShipTimer || {};
 	*/
 	Apns.prototype.createSettingMessage = function () {
 		var message = {};
-		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"alert\":\"iPhoneが正常に登録されました！\",\"sound\": \"default\",\"content-available\": 1}}";
-		//var typeId = "M";
+		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"alert\":\"iPhoneが正常に登録されました！\",\"sound\": \"default\"}}";
+		//var typeId = "mission";
 		//var deckId = "2";
-		//var missionId = "2";
-		//var nowDate = Date.now();
-		//message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"content-available\": 1}, \"type\":\"" + typeId +"\", \"arg1\":\"" + deckId +"\",\"arg2\":\"" + missionId +"\",\"arg3\":\"" + nowDate +"\"}";
+		//var key = "45";
+		//var label = "テスト";
+		//var startTime = Date.now();
+		//var endTime = Date.now() + 30000;
+		//message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"content-available\": 1}, \"type\":\"" + typeId +"\", \"deckId\":\"" + deckId +"\",\"key\":\"" + key +"\",\"label\":\"" + label +"\",\"startTime\":\"" + startTime +"\",\"endTime\":\"" + endTime +"\"}";
 		// 共通メッセージ処理を実行
 		this._createMessage(message);
 	}
 	
 	/**
-	 * (遠征)メッセージの生成
+	 * (遠征・入渠・建造)メッセージの生成
+	 * @param {Object} type
+	 * @param {Object} deckId
+	 * @param {Object} key
+	 * @param {Object} label
+	 * @param {Object} startTime
+	 * @param {Object} endTime
 	 * @returns {*}
 	 * @public
 	*/
-	Apns.prototype.createMissionMessage = function (deckId, missionId, nowDate) {
-		var typeId = "M";
+	Apns.prototype.createMessage = function (type, deckId, key, label, startTime, endTime) {
 		var message = {};
-		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"content-available\": 1}, \"type\":\"" + typeId +"\", \"arg1\":\"" + deckId +"\",\"arg2\":\"" + missionId +"\",\"arg3\":\"" + nowDate +"\"}";
+		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"content-available\": 1}, \"type\":\"" + typeId +"\", \"deckId\":\"" + deckId +"\",\"key\":\"" + key +"\",\"label\":\"" + label +"\",\"startTime\":\"" + startTime +"\",\"endTime\":\"" + endTime +"\"}";
 		// 共通メッセージ処理を実行
 		this._createMessage(message);
 	}

@@ -64,6 +64,103 @@ var config = {
 		}, true);
 
 	}
+	
+	// 設定値によるボタン初期化
+	// 使用フラグを取得
+	var useFlg = false;
+	useFlg = (localStorage[Constants.WgdtSet.B_USE] == "ON") ? true : false;
+	if(useFlg){
+		
+		$('#widgetUse').addClass('btn-success');
+		$('#widgetUse').removeClass('btn-default');
+		$('#widgetUse').text("使用する　");
+		
+		// 遠征列のボタンを活性化
+		$('#missionBtn').removeAttr('disabled');
+		
+		// 入渠列をフェードイン
+		$('#trNyukyo').addClass('in');
+		
+		// 建造列をフェードイン
+		$('#trBuild').addClass('in');
+		
+		// 起動ボタンに注釈設定
+		$('#shipTimerNotWindow').removeClass('hide');
+		$('#shipTimerWindow').addClass('hide');
+		$('#shipTimerNotWindow').tooltip();
+		
+	} else {
+		
+		$('#widgetUse').removeClass('btn-success');
+		$('#widgetUse').addClass('btn-default');
+		$('#widgetUse').text("使用しない");
+		
+		// 遠征列のボタンを非活性化
+		$('#missionBtn').attr('disabled','disabled');
+		$('#missionBtn').addClass('btn-primary');
+		$('#missionBtn').removeClass('btn-default');
+		$('#missionBtn').text("ON");
+		
+		// 入渠列をフェードアウト
+		$('#trNyukyo').removeClass('in');
+		
+		// 建造列をフェードアウト
+		$('#trBuild').removeClass('in');
+		
+		// 起動ボタンの注釈削除
+		$('#shipTimerWindow').removeClass('hide');
+		$('#shipTimerNotWindow').addClass('hide');
+
+	}
+
+	// 使用しないの時は表示ON固定
+	if (useFlg) {
+		// 遠征使用フラグを取得
+		var chkFlg = (localStorage[Constants.WgdtSet.B_ENSEI] == "ON") ? true : false;
+		if(chkFlg){
+			$('#missionBtn').addClass('btn-primary');
+			$('#missionBtn').removeClass('btn-default');
+			$('#missionBtn').text("ON");
+		} else {
+			$('#missionBtn').removeClass('btn-primary');
+			$('#missionBtn').addClass('btn-default');
+			$('#missionBtn').text("OFF");
+		}
+	}
+	// 入渠使用フラグを取得
+	chkFlg = (localStorage[Constants.WgdtSet.B_NYUKYO] == "ON") ? true : false;
+	if(chkFlg){
+		$('#nyukyoBtn').addClass('btn-primary');
+		$('#nyukyoBtn').removeClass('btn-default');
+		$('#nyukyoBtn').text("ON");
+	} else {
+		$('#nyukyoBtn').removeClass('btn-primary');
+		$('#nyukyoBtn').addClass('btn-default');
+		$('#nyukyoBtn').text("OFF");
+	}
+	
+	// 建造使用フラグを取得
+	chkFlg = (localStorage[Constants.WgdtSet.B_BUILD] == "ON") ? true : false;
+	if(chkFlg){
+		$('#buildBtn').addClass('btn-primary');
+		$('#buildBtn').removeClass('btn-default');
+		$('#buildBtn').text("ON");
+	} else {
+		$('#buildBtn').removeClass('btn-primary');
+		$('#buildBtn').addClass('btn-default');
+		$('#buildBtn').text("OFF");
+	}
+	
+	// ウィジェットをDLするボタンを初期化
+	$('#wgtDLbtn').tooltip();
+	
+	// YOUTUBE表示機能を初期化
+	$("#YTLink").attr('data-video-id',Constants.Hanyou.YT_URL);
+	$(".video-link").jqueryVideoLightning({
+		autoplay: 1,
+		color: "white"
+	});
+	
 })();
 
 
@@ -164,8 +261,163 @@ $('#deviceReleaseBtn').click(function() {
 		}
 	}.bind(this), popOuathFlg);	
 
+});
 
+// 艦これウィジェット使用ボタン
+$('#widgetUse').click(function() {
+	// 使用フラグを取得
+	var chkFlg = (localStorage[Constants.WgdtSet.B_USE] == "ON") ? true : false;
+	if(!chkFlg){
+		// 自分自身を「使用する」に変更する
+		var btn = $(this);
+		
+		btn.addClass('btn-success');
+		btn.removeClass('btn-default');
+		btn.text("使用する　");
+		
+		// 遠征列のボタンを活性化
+		$('#missionBtn').removeAttr('disabled');
+		// 使用フラグを取得
+		var enseiFlg = (localStorage[Constants.WgdtSet.B_ENSEI] == "ON") ? true : false;
+		if(enseiFlg){
+			// ONの場合	
+			$('#missionBtn').addClass('btn-primary');
+			$('#missionBtn').removeClass('btn-default');
+			$('#missionBtn').text("ON");
+			
+		} else {
+			// OFFの場合
+			$('#missionBtn').removeClass('btn-primary');
+			$('#missionBtn').addClass('btn-default');
+			$('#missionBtn').text("OFF");
 
+		}
+		
+		// 入渠列をフェードイン
+		$('#trNyukyo').addClass('in');
+		
+		// 建造列をフェードイン
+		$('#trBuild').addClass('in');
+		
+		// 起動ボタンに注釈設定
+		$('#shipTimerNotWindow').removeClass('hide');
+		$('#shipTimerWindow').addClass('hide');
+		$('#shipTimerNotWindow').tooltip();
+		
+		// 使用フラグをONにする
+		localStorage[Constants.WgdtSet.B_USE] = "ON";
+	} else {
+		// 自分自身を「使用しない」に変更する
+		var btn = $(this);
+		
+		btn.removeClass('btn-success');
+		btn.addClass('btn-default');
+		btn.text("使用しない");
+		
+		// 遠征列のボタンを非活性化
+		$('#missionBtn').attr('disabled','disabled');
+		// "ON"表示にする
+		$('#missionBtn').addClass('btn-primary');
+		$('#missionBtn').removeClass('btn-default');
+		$('#missionBtn').text("ON");
+		
+		
+		// 入渠列をフェードアウト
+		$('#trNyukyo').removeClass('in');
+		
+		// 建造列をフェードアウト
+		$('#trBuild').removeClass('in');
+		
+		// 起動ボタンの注釈削除
+		$('#shipTimerWindow').removeClass('hide');
+		$('#shipTimerNotWindow').addClass('hide');
+
+		// 使用フラグをONにする
+		localStorage[Constants.WgdtSet.B_USE] = "OFF";
+	}
+
+});
+
+// 艦これウィジェット遠征ボタン
+$('#missionBtn').click(function() {
+	// 自分自身を取得する
+	var btn = $(this);
+	
+	// 使用フラグを取得
+	var chkFlg = (localStorage[Constants.WgdtSet.B_ENSEI] == "ON") ? true : false;
+	if(!chkFlg){
+		
+		btn.addClass('btn-primary');
+		btn.removeClass('btn-default');
+		btn.text("ON");
+		
+		// 使用フラグをONにする
+		localStorage[Constants.WgdtSet.B_ENSEI] = "ON";
+	} else {
+		
+		btn.removeClass('btn-primary');
+		btn.addClass('btn-default');
+		btn.text("OFF");
+
+		// 使用フラグをONにする
+		localStorage[Constants.WgdtSet.B_ENSEI] = "OFF";
+	}
+
+});
+// 艦これウィジェット入渠ボタン
+$('#nyukyoBtn').click(function() {
+	// 自分自身を取得する
+	var btn = $(this);
+	
+	// 使用フラグを取得
+	var chkFlg = (localStorage[Constants.WgdtSet.B_NYUKYO] == "ON") ? true : false;
+	if(!chkFlg){
+		
+		btn.addClass('btn-primary');
+		btn.removeClass('btn-default');
+		btn.text("ON");
+		
+		// 使用フラグをONにする
+		localStorage[Constants.WgdtSet.B_NYUKYO] = "ON";
+	} else {
+		
+		btn.removeClass('btn-primary');
+		btn.addClass('btn-default');
+		btn.text("OFF");
+
+		// 使用フラグをONにする
+		localStorage[Constants.WgdtSet.B_NYUKYO] = "OFF";
+	}
+});
+// 艦これウィジェット建造ボタン
+$('#buildBtn').click(function() {
+	// 自分自身を取得する
+	var btn = $(this);
+	
+	// 使用フラグを取得
+	var chkFlg = (localStorage[Constants.WgdtSet.B_BUILD] == "ON") ? true : false;
+	if(!chkFlg){
+		
+		btn.addClass('btn-primary');
+		btn.removeClass('btn-default');
+		btn.text("ON");
+		
+		// 使用フラグをONにする
+		localStorage[Constants.WgdtSet.B_BUILD] = "ON";
+	} else {
+		
+		btn.removeClass('btn-primary');
+		btn.addClass('btn-default');
+		btn.text("OFF");
+
+		// 使用フラグをONにする
+		localStorage[Constants.WgdtSet.B_BUILD] = "OFF";
+	}
+});
+
+// 艦これウィジェットDLボタン
+$('#wgtDLbtn').click(function() {
+	chrome.tabs.create({url:Constants.WgdtSet.DL_URL}, function(){});
 });
 
 

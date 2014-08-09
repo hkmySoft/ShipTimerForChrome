@@ -12,6 +12,7 @@
 	<link href="../css/popup.css" rel="stylesheet">
 	<!-- JavaScript File Library -->
 	<script src="../lib/jquery.min.js"></script>
+	<script src="../lib/jquery-video-lightning.js"></script>
 	<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../lib/oauth2/oauth2.js" charset="UTF-8"></script>
 	<script src="../lib/aws-sdk-2.0.0-rc13.min.js" charset="UTF-8"></script>
@@ -42,54 +43,57 @@
    				</div>
 				<div class="panel-body">
 					<div role="form" id="deviceForm">
-						<div class="form-group">
-							<div clas="row"><label for="inputDeviceId">遠征自動セット</label>　<button id="deviceReleaseBtn" data-loading-text="解除中..." class="btn btn-danger btn-xs hide">認証解除</buton></div>
+						<div class="form-group  margin-off">
+							<div><label for="inputDeviceId">自動タイマーセット</label>　<button id="deviceReleaseBtn" data-loading-text="解除中..." class="btn btn-danger btn-xs hide">認証解除</buton></div>
 							<fieldset id="inputDeviceIdField" class="fieldset-plus">
-								<button id="deviceRegistBtn" data-loading-text="認証中..." data-error-text="認証失敗" class="btn btn-success btn-block">アカウント認証</buton>
+								<button id="deviceRegistBtn" data-loading-text="認証中..." data-error-text="認証失敗" class="btn btn-success btn-block margin-top-addm">デバイス認証</buton>
 								<button id="monitorBtn" class="btn btn-info btn-block hide">起動中</buton>
 								<button id="waitMonitorBtn" class="btn btn-warning btn-block hide">待機中</buton>
 							</fieldset>
 							<br/>
-							<div clas="row"><label for="inputDeviceId">艦これウィンドウ</label></div>
-							<fieldset id="startUpWindow" class="fieldset-plus">
-								<button id="shipTimerWindow" class="btn btn-default btn-block">起 動</buton>
+							<fieldset id="KanColleStart" class="fieldset-plus">
+								<button id="shipTimerNotWindow" class="btn btn-default btn-block margin-top-addm hide" rel="tooltip" title="艦これウィジェットを起動して下さい。" >艦これ起動</buton>
+								<button id="shipTimerWindow" class="btn btn-default btn-block">艦これ起動</buton>
 							</fieldset>
+							<br/>
+							<div><label class="small">環境設定</label></div>
+							<table class="table margin-off">
+								<thead>
+									<tr>
+										<th colspan="3">艦これウィジェット　<span id="wgtDLbtn"  class="glyphicon glyphicon-download cursor-point" rel="tooltip" title="ChromeウェブストアからDL"></span></th>
+										<th><button id="widgetUse" type="button" class="btn btn-default btn-xs btn-block">使用しない</button></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td colspan="2">遠征</td>
+										<td><button id="missionBtn" type="button" class="btn btn-primary btn-xs btn-block" disabled="disabled">ON</button></td>
+									</tr>
+									<tr id="trNyukyo" class="fade">
+											<td>2</td>
+											<td colspan="2">入渠</td>
+											<td><button id="nyukyoBtn" type="button" class="btn btn-default btn-xs btn-block">OFF</button></td>
+									</tr>
+									<tr id="trBuild" class="fade">
+										<td>3</td>
+										<td colspan="2">建造</td>
+										<td><button id="buildBtn" type="button" class="btn btn-default btn-xs btn-block">OFF</button></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>							
 						</div>
 					</div>
 				</div>
 				<div class="panel-footer padding-off">
-					<div class="click-area" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-						<div class="col-sm-12">使用方法 <span class="caret"></span></div>
-					</div>
-					<div id="collapseThree" class="collapse">
-						<div id="carousel-captions" class="carousel slide" data-ride="carousel" data-interval="false">
-							<ol class="carousel-indicators">
-								<li data-target="#carousel-captions" data-slide-to="0" class="active"></li>
-								<li data-target="#carousel-captions" data-slide-to="1"></li>
-								<li data-target="#carousel-captions" data-slide-to="2"></li>
-							</ol>
-							<div class="carousel-inner">
-								<div class="item active">
-									<!-- <img data-src="" alt="First slide image"> -->
-									<h3>First slide label</h3>
-									<h3>First slide label</h3>
-								</div>
-								<div class="item">
-									<!-- <img data-src="" alt="Second slide image"> -->
-									<h3>Second slide label</h3>
-								</div>
-								<div class="item">
-									<!-- <img data-src="" alt="Third slide image"> -->
-									<h7>Third slide label</h7>
-								</div>
-							</div>
-							<a class="left carousel-control" href="#carousel-captions" data-slide="prev">
-								<span class="glyphicon glyphicon-chevron-left"></span>
-							</a>
-							<a class="right carousel-control" href="#carousel-captions" data-slide="next">
-								<span class="glyphicon glyphicon-chevron-right"></span>
-							</a>
-						</div>
+					<div class="click-area">
+						<div id="YTLink" class="col-sm-12 video-link" data-video-id=""><label>使い方を見る　<span class="glyphicon glyphicon-film"></span><label></div>
 					</div>
 				</div>
 			</div>

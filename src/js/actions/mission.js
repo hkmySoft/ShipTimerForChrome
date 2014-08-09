@@ -30,7 +30,7 @@ var ShipTimer = ShipTimer || {};
 		console.log("MissonID : %s", missionId);
 		console.log("NowDate : %d", nowDate);
 	
-		this.Apns.createMissionMessage(deckId,missionId,nowDate);
+		this.Apns.createMessage(Constants.Apns.T_ENSEI, deckId, missionId, "", nowDate, "");
 		this.Apns.forStart();
 		
 	};

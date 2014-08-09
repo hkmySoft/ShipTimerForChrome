@@ -9,15 +9,16 @@ var Constants = {
 		DEVICE_ERR_TOOL_TIP: "iPhoneを登録してください。",
 		DEVICE_ERR_MESSAGE: "iPhoneの認証に失敗しました。\n先にiPhone版「艦これタイマー」で\n登録を行ってください。\nまたは、下記の「使用方法」をご参照下さい。",
 		MAX_REPEAT: 10,
+		YT_URL : "y-4hTrLgh9Adc"
 	},
 	StWin : {
 		KANCOLLE: "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/",
 		SUFFIX: "?shiptimer=true",
-		WIDTH: 765,
-		HEIGHT: 560,
+		WIDTH: 750,
+		HEIGHT: 470,
 		TOP: 50,
 		LEFT: 50,
-		TYPE: 'normal'
+		TYPE: 'popup'
 	},
 	Strage : {
 		OAUTH_COMP_KEY: "OAuth_Complete",
@@ -25,6 +26,18 @@ var Constants = {
 		MONITOR_FLG: "Monitor_Flg",
 		LOCAL_DEVICE_ID: "AwsSNS_Device_ID",
 		LOCAL_ENDPOINT: "AwsSNS_End_Point"
+	},
+	Apns : {
+		T_ENSEI  : "mission",
+		T_NYUKYO : "nyukyo",
+		T_BUILD  : "createship"
+	},
+	WgdtSet : {
+		B_USE    : "Wgdt_Use",
+		B_ENSEI  : "Wgdt_Mission",
+		B_NYUKYO : "Wgdt_Nyukyo",
+		B_BUILD  : "Wgdt_CreateShip",
+		DL_URL   : "https://chrome.google.com/webstore/detail/%E8%89%A6%E3%81%93%E3%82%8C%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88/iachoklpnnjfgmldgelflgifhdaebnol?hl=ja"
 	},
 	AwsConst : {
 		CONFIG_REGION: 'us-east-1',
