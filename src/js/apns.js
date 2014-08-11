@@ -113,7 +113,7 @@ var ShipTimer = ShipTimer || {};
 	
 	/**
 	 * (遠征・入渠・建造)メッセージの生成
-	 * @param {Object} type
+	 * @param {Object} typeId
 	 * @param {Object} deckId
 	 * @param {Object} key
 	 * @param {Object} label
@@ -122,7 +122,7 @@ var ShipTimer = ShipTimer || {};
 	 * @returns {*}
 	 * @public
 	*/
-	Apns.prototype.createMessage = function (type, deckId, key, label, startTime, endTime) {
+	Apns.prototype.createMessage = function (typeId, deckId, key, label, startTime, endTime) {
 		var message = {};
 		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"content-available\": 1}, \"type\":\"" + typeId +"\", \"deckId\":\"" + deckId +"\",\"key\":\"" + key +"\",\"label\":\"" + label +"\",\"startTime\":\"" + startTime +"\",\"endTime\":\"" + endTime +"\"}";
 		// 共通メッセージ処理を実行

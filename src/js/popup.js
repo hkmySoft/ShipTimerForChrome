@@ -265,15 +265,72 @@ $('#deviceReleaseBtn').click(function() {
 
 // 艦これウィジェット使用ボタン
 $('#widgetUse').click(function() {
+	// 自分自身を取得する
+	var btn = $(this);
+	btn.button('reset');
+	btn.removeClass('btn-danger');
+	
+	// 使用フラグを取得
+	var chkFlg = (localStorage[Constants.WgdtSet.B_USE] == "ON") ? true : false;
+	if (chkFlg) {
+		// 表示を切り替える
+		wghtUseBtnChange();
+	} else {
+		// メッセージを送信して認証する
+		chrome.runtime.sendMessage(Constants.WgdtSet.WGDT_ID, {path:"/api/subscribe"}, function(response) {
+			if(typeof response == 'undefined') {
+				// "登録"ボタンを"エラー"にする
+				btn.button('error');
+				// 赤色に変更
+				btn.removeClass('btn-default');
+				btn.addClass('btn-danger');
+				// エラーメッセージ
+				alert(Constants.Hanyou.WGDT_NOTHING_ERR_MESSAGE);
+				
+			} else {
+				switch(response.status){
+					case 200:		// 正常
+					case 409:		// 登録済み
+						// 表示を切り替える
+						wghtUseBtnChange();
+						break;
+					case 403:		// 不許可
+						// "登録"ボタンを"エラー"にする
+						btn.button('error');
+						// 赤色に変更
+						btn.removeClass('btn-default');
+						btn.addClass('btn-danger');
+						// エラーメッセージ
+						alert(Constants.Hanyou.WGDT_CANCEL_ERR_MESSAGE);
+						break;
+					default:
+						// "登録"ボタンを"エラー"にする
+						btn.button('error');
+						// 赤色に変更
+						btn.removeClass('btn-default');
+						btn.addClass('btn-danger');
+						// エラーメッセージ
+						alert(Constants.Hanyou.WGDT_SOME_ERR_MESSAGE);
+						break;
+				}
+			}
+		}.bind(this));
+	}
+
+	
+
+});
+
+// 艦これウィジェット使用切り替え
+function wghtUseBtnChange() {
+
 	// 使用フラグを取得
 	var chkFlg = (localStorage[Constants.WgdtSet.B_USE] == "ON") ? true : false;
 	if(!chkFlg){
-		// 自分自身を「使用する」に変更する
-		var btn = $(this);
-		
-		btn.addClass('btn-success');
-		btn.removeClass('btn-default');
-		btn.text("使用する　");
+		// 「使用する」に変更する
+		$('#widgetUse').addClass('btn-success');
+		$('#widgetUse').removeClass('btn-default');
+		$('#widgetUse').text("使用する　");
 		
 		// 遠征列のボタンを活性化
 		$('#missionBtn').removeAttr('disabled');
@@ -307,12 +364,10 @@ $('#widgetUse').click(function() {
 		// 使用フラグをONにする
 		localStorage[Constants.WgdtSet.B_USE] = "ON";
 	} else {
-		// 自分自身を「使用しない」に変更する
-		var btn = $(this);
-		
-		btn.removeClass('btn-success');
-		btn.addClass('btn-default');
-		btn.text("使用しない");
+		// 「使用しない」に変更する
+		$('#widgetUse').removeClass('btn-success');
+		$('#widgetUse').addClass('btn-default');
+		$('#widgetUse').text("使用しない");
 		
 		// 遠征列のボタンを非活性化
 		$('#missionBtn').attr('disabled','disabled');
@@ -336,7 +391,7 @@ $('#widgetUse').click(function() {
 		localStorage[Constants.WgdtSet.B_USE] = "OFF";
 	}
 
-});
+}
 
 // 艦これウィジェット遠征ボタン
 $('#missionBtn').click(function() {

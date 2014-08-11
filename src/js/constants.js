@@ -7,7 +7,10 @@ var Constants = {
 		DEFAULT_TOOL_TIP: "艦これタイマー連携ツール Beta",
 		OAUTH_ERR_TOOL_TIP: "クリックしてGoogleとの連携を許可してください",
 		DEVICE_ERR_TOOL_TIP: "iPhoneを登録してください。",
-		DEVICE_ERR_MESSAGE: "iPhoneの認証に失敗しました。\n先にiPhone版「艦これタイマー」で\n登録を行ってください。\nまたは、下記の「使用方法」をご参照下さい。",
+		DEVICE_ERR_MESSAGE: "iPhoneの認証に失敗しました。\n先にiPhone版「艦これタイマー」で\n登録を行ってください。\nまたは、下記の「使い方を見る」動画をご覧ください。",
+		WGDT_NOTHING_ERR_MESSAGE: "艦これウィジェットが見つかりません。\nChromeウェブストアからダウンロードして下さい。",
+		WGDT_CANCEL_ERR_MESSAGE: "データの要求を許可しない場合は\n艦これウィジェットの機能は使用できません。",
+		WGDT_SOME_ERR_MESSAGE: "何らかのエラーが発生したため、\n設定できませんでした。",
 		MAX_REPEAT: 10,
 		YT_URL : "y-4hTrLgh9Adc"
 	},
@@ -37,6 +40,7 @@ var Constants = {
 		B_ENSEI  : "Wgdt_Mission",
 		B_NYUKYO : "Wgdt_Nyukyo",
 		B_BUILD  : "Wgdt_CreateShip",
+		WGDT_ID  : "eecngmillminbdldimjbknhakcljolpk",
 		DL_URL   : "https://chrome.google.com/webstore/detail/%E8%89%A6%E3%81%93%E3%82%8C%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88/iachoklpnnjfgmldgelflgifhdaebnol?hl=ja"
 	},
 	AwsConst : {

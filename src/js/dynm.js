@@ -45,11 +45,14 @@ var ShipTimer = ShipTimer || {};
 						TableName : Constants.AwsConst.DB_TABLE,
 						Key : {user_Id : {S:this.user_id}}
 					},
-					function(response,data){
-						if(typeof data != "undefined"){
-							this.device_id = data.Item.device_Id.S;
-							// デバイスIDをローカルに保存
-							localStorage[Constants.Strage.LOCAL_DEVICE_ID] = this.device_id;
+					function(err,data){
+						if (err) {
+						} else {
+							if(typeof data != "undefined" && typeof data.Item != "undefined"){
+								this.device_id = data.Item.device_Id.S;
+								// デバイスIDをローカルに保存
+								localStorage[Constants.Strage.LOCAL_DEVICE_ID] = this.device_id;
+							}
 						}
 						callback();
 					}

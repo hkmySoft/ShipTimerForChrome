@@ -19,6 +19,26 @@ var ShipTimer = ShipTimer || {};
 		}
 		return this;
 	};
+	Dispatcher.prototype.eat_m = function(message){
+		if(typeof message != 'undefined'){
+			switch(message.event.target){
+				case Constants.Apns.T_ENSEI:
+					// TODO 遠征IDがないため一旦コメント
+					// this.action.forMissionStartMessage(message);
+					break;
+				case Constants.Apns.T_NYUKYO:
+					this.action.forHospitalStartMessage(message);
+					break;
+				case Constants.Apns.T_BUILD:
+					this.action.forBuildStartMessage(message);
+					break;
+				default:
+					console.log(message);
+			}
+		}
+		
+		
+	};
 	Dispatcher.prototype.bind = function(_action){
 		this.action = _action;
 		return this;
