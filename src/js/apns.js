@@ -100,13 +100,6 @@ var ShipTimer = ShipTimer || {};
 	Apns.prototype.createSettingMessage = function () {
 		var message = {};
 		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"alert\":\"iPhoneが正常に登録されました！\",\"sound\": \"default\"}}";
-		//var typeId = "mission";
-		//var deckId = "2";
-		//var key = "45";
-		//var label = "テスト";
-		//var startTime = Date.now();
-		//var endTime = Date.now() + 30000;
-		//message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"content-available\": 1}, \"type\":\"" + typeId +"\", \"deckId\":\"" + deckId +"\",\"key\":\"" + key +"\",\"label\":\"" + label +"\",\"startTime\":\"" + startTime +"\",\"endTime\":\"" + endTime +"\"}";
 		// 共通メッセージ処理を実行
 		this._createMessage(message);
 	}

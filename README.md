@@ -2,71 +2,36 @@
 ## iPhone版艦これタイマー連携ツール 
 艦これタイマー連携ツールは  
 iPhone版「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id684642180?l=ja&ls=1&mt=8)」に  
-遠征時間を自動セットするChrome拡張です  
+遠征・入渠・建造時間を自動セットするChrome拡張です。  
+    
+    
 
 ## 機能
 - 機能概要
-    1. 遠征のタイマーを自動で取得し、  iPhone版艦これタイマーに自動で設定してくれます
+    1. 遠征のタイマーを自動で取得し、  iPhone版艦これタイマーに自動で設定します。
     1. (iPhone版艦これタイマーが)完了時間を通知します
-    1. 艦これをウィンドウ起動できます。
-    1. 「艦これウィジェット」さん等とも併用可能です。
-
-## 使い方
-### ■■ Googleアカウントが必要です。 ■■
-
-### iPhone版「艦これタイマー」での事前準備
-1. 「その他」タブの「お品書き」画面（アイスクリームボタン）を表示させます。
-1. 「」をタップして表示される説明を確認します。
-1. GoogleアカウントのID及びパスワードを入力し、認証します。
-1. 「iPhoneの認証情報を登録しました。これで事前準備は完了です。」と表示されれば完了です。
+    1. 「[艦これウィジェット]()」様を使用すると入渠・建造時間まで自動で設定されます。
     
     
-### iPhone版艦これタイマー連携ツールの使い方
-1. インストール後、このツールのアイコンが表示されるのでクリックします。
-1. 初回クリック時にGoogle認証が表示されるので、  
-**iPhone版「艦これタイマー」で使用したGoogleアカウント**で認証します。
-1. 再度ツールのアイコンをクリックすると「開始」ボタンが表示されるのでクリックします。 
-1. 正常に認証された場合は、ボタンが「起動中」となります。  
-**必ずiPhoneの登録から行ってください。**登録していない場合は認証に失敗します。
-1. 「起動中」の場合に艦これをプレイすると遠征時間がiPhone版「艦これタイマー」に自動でセットされます。
     
-### おまけ
-- 「艦これを起動」ボタンを起動すると艦これをウィンドウ化して起動することが出来ます。
+    
+## 用意するもの
+1.**Googleアカウント**
+1.Google Chrome
+1.iPhoneアプリ[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id684642180?l=ja&ls=1&mt=8)
+1.Chrome拡張[艦これタイマー連携ツール]()
+1.Chrome拡張[艦これウィジェット]()
+    
+    
+    
+    
+***
+### 使い方
+    [![](http://img.youtube.com/vi/4hTrLgh9Adc/0.jpg)](https://www.youtube.com/watch?v=4hTrLgh9Adc)
+    
+    
 
 ***
-インストールはこちらから。※まだ未公開  
-[Chrome ウェブストア - iPhone版艦これタイマー連携ツール]()
-
-iPhone版艦これタイマーはこちらから。  
-[AppStore - 艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id684642180?l=ja&ls=1&mt=8)
-
-
-
-
-
-## よくある質問
-
-- これは何ですか？
-    - iPhoneアプリの艦これサポートツール「艦これタイマー」のサポートツールです。  
-    （これもうわかんねーな）
-
-- どうやってiPhone版で通知を設定するの？
-    - 「使い方」をご確認ください。**Googleアカウントが必須です**
-
-- 無料なの？
-    - β版の間は広告除去アドオン購入者が使用可能の限定機能とさせていただいております。  
-    正式公開後は無料にて使用いただける予定です。
-
-- なんで広告除去アドオン買わないといけないの？
-    - いずれは機能を開放して無料にて使用できるようにしますので  
-    少々お待ちください。
-
-- いつ無料になんの？
-    - 時期は未定です。
-
-- 規約違反なんすか？
-    - 解釈による、としか言えませんが、少なくとも艦これ本体側に不正なアクセスを送信しているつもりはありません。
-
 
 
 ## お問い合わせ/機能要望/バグ報告
@@ -76,7 +41,32 @@ iPhone版艦これタイマーはこちらから。
     - [github.com/hkmySoft/ShipTimeForChrome/issues/new](https://github.com/hkmySoft/ShipTimeForChrome/issues/new) 
 
 
-# RELEASES
+## RELEASES
 - RELEASEINFO
 - 2014/05/23 v0.0.1
     - GitHubにて管理開始
+
+
+## 使用ソフトウェア
+
+The MIT License (MIT)
+
+Copyright (c) 2014 otiai10
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
