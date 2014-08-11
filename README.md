@@ -6,20 +6,22 @@ iPhone版「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id
     
     
 
-## 機能
-- 機能概要
-    1. 遠征のタイマーを自動で取得し、  iPhone版艦これタイマーに自動で設定します。
-    1. (iPhone版艦これタイマーが)完了時間を通知します
-    1. 「[艦これウィジェット]()」様を使用すると入渠・建造時間まで自動で設定されます。
-[空行](http://example.com/) 
+## 機能概要
+1. 遠征のタイマーを自動で取得し、  iPhone版艦これタイマーに自動で設定します。
+1. (iPhone版艦これタイマーが)完了時間を通知します
+1. 「[艦これウィジェット]()」様を使用すると入渠・建造時間まで自動で設定されます。
+
+
 ## 用意するもの
-  1. **Googleアカウント**
-  1. Google Chrome
-  1. iPhoneアプリ「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id684642180?l=ja&ls=1&mt=8)」
-  1. Chrome拡張「[艦これタイマー連携ツール]()」
-  1. Chrome拡張「[艦これウィジェット]()」
+1. **Googleアカウント**
+1. Google Chrome
+1. iPhoneアプリ「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id684642180?l=ja&ls=1&mt=8)」
+1. Chrome拡張「[艦これタイマー連携ツール]()」
+1. Chrome拡張「[艦これウィジェット]()」
+
+
 ## 使い方
-    [![](http://img.youtube.com/vi/4hTrLgh9Adc/0.jpg)](https://www.youtube.com/watch?v=4hTrLgh9Adc)
+[![](http://img.youtube.com/vi/4hTrLgh9Adc/0.jpg)](https://www.youtube.com/watch?v=4hTrLgh9Adc)
     
     
 ## お問い合わせ/機能要望/バグ報告
