@@ -41,6 +41,9 @@ iPhone版「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id
     - Ingressやると良いよ！！面白いよ！比較にならないくらい電池がモリモリ減るんで、正直電池の減りとかどうでも良くなります。
 
 
+正直、β版のままいくつもりなので生暖かい目みていただけると助かります。
+
+
 ## お問い合わせ/機能要望/バグ報告
 - Twitterから
     - [twitter.com/Kozeni_50yen](https://twitter.com/Kozeni_50yen)
