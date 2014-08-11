@@ -4,27 +4,32 @@ iPhone版艦これタイマー連携ツール
 艦これタイマー連携ツールは  
 iPhone版「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id684642180?l=ja&ls=1&mt=8)」に  
 遠征・入渠・建造時間を自動セットするChrome拡張です。  
-    
-    
+
 
 ## 機能概要
+
 1. 遠征のタイマーを自動で取得し、  iPhone版艦これタイマーに自動で設定します。
 1. (iPhone版艦これタイマーが)完了時間を通知します
-1. 「[艦これウィジェット]()」様を使用すると入渠・建造時間まで自動で設定されます。
+1. 「[艦これウィジェット]()」様を使用すると入渠・建造時間まで自動で設定します。
 
 
 ## 用意するもの
+
 1. **Googleアカウント**
 1. Google Chrome
 1. iPhoneアプリ「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id684642180?l=ja&ls=1&mt=8)」
 1. Chrome拡張「[艦これタイマー連携ツール]()」
-1. Chrome拡張「[艦これウィジェット]()」
+1. Chrome拡張「[艦これウィジェット](https://chrome.google.com/webstore/detail/%E8%89%A6%E3%81%93%E3%82%8C%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88/iachoklpnnjfgmldgelflgifhdaebnol?hl=ja)」
 
 
 ## 使い方
 [![](http://img.youtube.com/vi/4hTrLgh9Adc/0.jpg)](https://www.youtube.com/watch?v=4hTrLgh9Adc)
-    
-    
+
+
+## 免責事項という名の言い訳
+- 
+    - 
+
 ## お問い合わせ/機能要望/バグ報告
 - Twitterから
     - [twitter.com/Kozeni_50yen](https://twitter.com/Kozeni_50yen)
