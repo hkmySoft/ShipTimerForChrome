@@ -16,14 +16,9 @@ var ShipTimer = ShipTimer || {};
 		if(!this.awsFlg) return;
 		var mntrFlg = (localStorage[Constants.Strage.MONITOR_FLG] == "ON") ? true : false;
 		if(!mntrFlg) return;
-		// TODO ↓遠征IDがないため一旦この処理を作成↓
 		var useFlg =  (localStorage[Constants.WgdtSet.B_USE] == "ON") ? true : false;
-		var chkFlg =  (localStorage[Constants.WgdtSet.B_ENSEI] == "ON") ? true : false;
-		if ((useFlg && chkFlg) || !useFlg){
-			// ウィジェット使用するかつ遠征ONまたはウィジェット使用しない
-			this.mission.forStart(params);
-		}
-		// TODO ↑遠征IDがないため一旦この処理を作成↑
+		if(useFlg) return;
+		this.mission.forStart(params);
 	};
 	Action.prototype.forMissionStartMessage = function(params){
 		if(!this.awsFlg) return;

@@ -29,6 +29,9 @@ var ShipTimer = ShipTimer || {};
 			console.log("Undefined Error !!");
 			return;
 		}
+		console.log("DeckId : %s", deckId);
+		console.log("startTime : %d", startTime);
+		console.log("endTime : %d", endTime);
 		
 		this.Apns.createMessage(Constants.Apns.T_BUILD, deckId, "", "", startTime, endTime);
 		this.Apns.forStart();

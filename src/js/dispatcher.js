@@ -23,8 +23,7 @@ var ShipTimer = ShipTimer || {};
 		if(typeof message != 'undefined'){
 			switch(message.event.target){
 				case Constants.Apns.T_ENSEI:
-					// TODO 遠征IDがないため一旦コメント
-					// this.action.forMissionStartMessage(message);
+					this.action.forMissionStartMessage(message);
 					break;
 				case Constants.Apns.T_NYUKYO:
 					this.action.forHospitalStartMessage(message);

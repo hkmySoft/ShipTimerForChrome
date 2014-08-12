@@ -6,8 +6,8 @@ var Constants = {
 	Hanyou : {
 		DEFAULT_TOOL_TIP: "艦これタイマー連携ツール Beta",
 		OAUTH_ERR_TOOL_TIP: "クリックしてGoogleとの連携を許可してください",
-		DEVICE_ERR_TOOL_TIP: "iPhoneを登録してください。",
-		DEVICE_ERR_MESSAGE: "iPhoneの認証に失敗しました。\n先にiPhone版「艦これタイマー」で\n登録を行ってください。\nまたは、下記の「使い方を見る」動画をご覧ください。",
+		DEVICE_ERR_TOOL_TIP: "iPhoneを認証してください。",
+		DEVICE_ERR_MESSAGE: "iPhoneの認証に失敗しました。\n先にiPhone版「艦これタイマー」から\n認証を行ってください。\nまたは、下記の「使い方を見る」動画をご覧ください。",
 		WGDT_NOTHING_ERR_MESSAGE: "艦これウィジェットが見つかりません。\nChromeウェブストアからダウンロードして下さい。",
 		WGDT_CANCEL_ERR_MESSAGE: "データの要求を許可しない場合は\n艦これウィジェットの機能は使用できません。",
 		WGDT_SOME_ERR_MESSAGE: "何らかのエラーが発生したため、\n設定できませんでした。",

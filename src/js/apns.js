@@ -99,7 +99,7 @@ var ShipTimer = ShipTimer || {};
 	*/
 	Apns.prototype.createSettingMessage = function () {
 		var message = {};
-		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"alert\":\"iPhoneが正常に登録されました！\",\"sound\": \"default\"}}";
+		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"alert\":\"iPhoneが正常に認証されました！\",\"sound\": \"default\",\"content-available\": 2}}";
 		// 共通メッセージ処理を実行
 		this._createMessage(message);
 	}
