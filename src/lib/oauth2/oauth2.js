@@ -120,7 +120,7 @@ OAuth2.prototype.openAuthorizationCodePopup = function(callback, flg) {
       height: crwHeight,
       left: crwLeft,
       top: crwTop,
-      focused: flg,
+      focused : flg,
       url: this.adapter.authorizationCodeURL(this.getConfig()),
       type: 'popup'
   }, function(window) {    // 1. user grants permission for the application to access the OAuth 2.0
@@ -133,6 +133,7 @@ OAuth2.prototype.openAuthorizationCodePopup = function(callback, flg) {
     // (if there are multiple OAuth 2.0 adapters)
     // 6. Finally, the flow is finished and client code can call
     // myAuth.getAccessToken() to get a valid access token.
+    chrome.windows.update(window.id, {focused : true}, function(){});
   });
 };
 
