@@ -114,7 +114,7 @@ OAuth2.prototype.openAuthorizationCodePopup = function(callback, flg) {
     crwLeft = 0;
     crwTop = 0;
   }
-
+  var gFlg = flg
   chrome.windows.create({
       width: crwWidth,
       height: crwHeight,
@@ -133,7 +133,12 @@ OAuth2.prototype.openAuthorizationCodePopup = function(callback, flg) {
     // (if there are multiple OAuth 2.0 adapters)
     // 6. Finally, the flow is finished and client code can call
     // myAuth.getAccessToken() to get a valid access token.
-    chrome.windows.update(window.id, {focused : true}, function(){});
+    if(gFlg){
+        var winId = window.id;
+        setTimeout(function(){
+            chrome.windows.update(window.id, {focused : true}, function(){});
+        }.bind(this), 1000);
+    }
   });
 };
 
