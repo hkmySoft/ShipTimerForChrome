@@ -17,8 +17,8 @@ var Constants = {
 	StWin : {
 		KANCOLLE: "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/",
 		SUFFIX: "?shiptimer=true",
-		WIDTH: 750,
-		HEIGHT: 470,
+		WIDTH: 730,
+		HEIGHT: 440,
 		TOP: 50,
 		LEFT: 50,
 		TYPE: 'popup'
@@ -40,7 +40,7 @@ var Constants = {
 		B_ENSEI  : "Wgdt_Mission",
 		B_NYUKYO : "Wgdt_Nyukyo",
 		B_BUILD  : "Wgdt_CreateShip",
-		WGDT_ID  : "eecngmillminbdldimjbknhakcljolpk",
+		WGDT_ID  : "mgnmdabjmpgenlghdgnidpopeidphjon",
 		DL_URL   : "https://chrome.google.com/webstore/detail/%E8%89%A6%E3%81%93%E3%82%8C%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88/iachoklpnnjfgmldgelflgifhdaebnol?hl=ja"
 	},
 	AwsConst : {

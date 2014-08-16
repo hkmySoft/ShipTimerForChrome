@@ -15,14 +15,6 @@ var ShipTimer = ShipTimer || {};
 		dispatcher.eat(data).execute();
 	},{'urls':[]},['requestBody']);
 
-	// == Message監視リスナー登録 ==
-	// メッセージを受信した時
-	chrome.runtime.onMessageExternal.addListener(function(message, sender) {
-		if (sender.id == Constants.WgdtSet.WGDT_ID) {
-			dispatcher.eat_m(message)
-		}
-	});
-
 	// == 認証確認 ==
 	var chkStorageOAuth = localStorage[Constants.Strage.OAUTH_COMP_KEY];
 	var chkStorageAws = localStorage[Constants.Strage.AWS_SNS_COMP_KEY];
