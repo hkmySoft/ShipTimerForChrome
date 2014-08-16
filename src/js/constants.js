@@ -12,7 +12,7 @@ var Constants = {
 		WGDT_CANCEL_ERR_MESSAGE: "データの要求を許可しない場合は\n艦これウィジェットの機能は使用できません。",
 		WGDT_SOME_ERR_MESSAGE: "何らかのエラーが発生したため、\n設定できませんでした。",
 		MAX_REPEAT: 10,
-		YT_URL : "y-4hTrLgh9Adc"
+		YT_URL : "y-8w6m771C9yg"
 	},
 	StWin : {
 		KANCOLLE: "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/",
@@ -40,7 +40,7 @@ var Constants = {
 		B_ENSEI  : "Wgdt_Mission",
 		B_NYUKYO : "Wgdt_Nyukyo",
 		B_BUILD  : "Wgdt_CreateShip",
-		WGDT_ID  : "mgnmdabjmpgenlghdgnidpopeidphjon",
+		WGDT_ID  : "iachoklpnnjfgmldgelflgifhdaebnol",
 		DL_URL   : "https://chrome.google.com/webstore/detail/%E8%89%A6%E3%81%93%E3%82%8C%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88/iachoklpnnjfgmldgelflgifhdaebnol?hl=ja"
 	},
 	AwsConst : {

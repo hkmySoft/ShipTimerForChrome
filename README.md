@@ -21,7 +21,9 @@ iPhone版「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id
 
 
 ## 使い方
-[![](http://img.youtube.com/vi/4hTrLgh9Adc/0.jpg)](https://www.youtube.com/watch?v=4hTrLgh9Adc)
+以下をクリックすると説明動画にジャンプします。  
+  
+[![](http://img.youtube.com/vi/8w6m771C9yg/0.jpg)](https://www.youtube.com/watch?v=8w6m771C9yg)
 
 
 ## 免責事項という名の言い訳
