@@ -25,6 +25,9 @@ var ShipTimer = ShipTimer || {};
 		}
 		// 現在時刻を取得する(ミリ秒)
 		var nowDate = Date.now();
+		console.log("DeckId : %s", deckId);
+		console.log("missionId : %s", missionId);
+		console.log("nowDate : %d", nowDate);
 
 		this.Apns.createMessage(Constants.Apns.T_ENSEI, deckId, missionId, "", nowDate, "");
 		this.Apns.forStart();
