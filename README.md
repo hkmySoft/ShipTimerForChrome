@@ -17,7 +17,7 @@ iPhone版「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id
 1. **Googleアカウント**
 1. Google Chrome
 1. iPhoneアプリ「[艦これタイマー](https://itunes.apple.com/jp/app/shiptimer/id684642180?l=ja&ls=1&mt=8)」
-1. Chrome拡張「[艦これタイマー連携ツール]()」
+1. Chrome拡張「[艦これタイマー連携ツール](https://chrome.google.com/webstore/detail/%E8%89%A6%E3%81%93%E3%82%8C%E3%82%BF%E3%82%A4%E3%83%9E%E3%83%BC%E9%80%A3%E6%90%BA%E3%83%84%E3%83%BC%E3%83%AB/nioemkhjlmohkgmkandecganpglmbhil)」
 
 
 ## 使い方
