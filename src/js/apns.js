@@ -24,6 +24,11 @@ var ShipTimer = ShipTimer || {};
 	*/
 	Apns.prototype._createEndPoint = function (callback) {
 		var callback = callback || function(){};
+		this.deviceToken = localStorage[Constants.Strage.LOCAL_DEVICE_ID];
+		this.endPointParams = {
+			PlatformApplicationArn:Constants.AwsConst.PLAT_APP,
+			Token:this.deviceToken,
+		};
 		this.sns.createPlatformEndpoint(this.endPointParams, function(err, data) {
 			if (err) {
 				console.log(err);
