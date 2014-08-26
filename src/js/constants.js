@@ -17,8 +17,8 @@ var Constants = {
 	StWin : {
 		KANCOLLE: "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/",
 		SUFFIX: "?shiptimer=true",
-		WIDTH: 730,
-		HEIGHT: 440,
+		WIDTH: 690,
+		HEIGHT: 435,
 		TOP: 50,
 		LEFT: 50,
 		TYPE: 'popup'

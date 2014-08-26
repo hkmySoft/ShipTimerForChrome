@@ -9,11 +9,10 @@ var ShipTimer = ShipTimer || {};
 		this.mission = new ShipTimer.Mission();
 		this.hospital = new ShipTimer.Hospital();
 		this.build = new ShipTimer.Build();
-		this.awsFlg = (localStorage[Constants.Strage.AWS_SNS_COMP_KEY] == "OK") ? true: false;
-
 	};
 	Action.prototype.forMissionStart = function(params){
-		if(!this.awsFlg) return;
+		var awsFlg = (localStorage[Constants.Strage.AWS_SNS_COMP_KEY] == "OK") ? true: false;
+		if(!awsFlg) return;
 		var mntrFlg = (localStorage[Constants.Strage.MONITOR_FLG] == "ON") ? true : false;
 		if(!mntrFlg) return;
 		var useFlg =  (localStorage[Constants.WgdtSet.B_USE] == "ON") ? true : false;
@@ -21,7 +20,8 @@ var ShipTimer = ShipTimer || {};
 		this.mission.forStart(params);
 	};
 	Action.prototype.forMissionStartMessage = function(params){
-		if(!this.awsFlg) return;
+		var awsFlg = (localStorage[Constants.Strage.AWS_SNS_COMP_KEY] == "OK") ? true: false;
+		if(!awsFlg) return;
 		var mntrFlg = (localStorage[Constants.Strage.MONITOR_FLG] == "ON") ? true : false;
 		if(!mntrFlg) return;
 		var useFlg =  (localStorage[Constants.WgdtSet.B_USE] == "ON") ? true : false;
@@ -32,7 +32,8 @@ var ShipTimer = ShipTimer || {};
 	};
 	Action.prototype.forHospitalStartMessage = function(params){
 		console.log("HOSPITAL IN");
-		if(!this.awsFlg) return;
+		var awsFlg = (localStorage[Constants.Strage.AWS_SNS_COMP_KEY] == "OK") ? true: false;
+		if(!awsFlg) return;
 		var mntrFlg = (localStorage[Constants.Strage.MONITOR_FLG] == "ON") ? true : false;
 		if(!mntrFlg) return;
 		var useFlg =  (localStorage[Constants.WgdtSet.B_USE] == "ON") ? true : false;
@@ -42,7 +43,8 @@ var ShipTimer = ShipTimer || {};
 		this.hospital.forStartMessage(params);
 	};
 	Action.prototype.forBuildStartMessage = function(params){
-		if(!this.awsFlg) return;
+		var awsFlg = (localStorage[Constants.Strage.AWS_SNS_COMP_KEY] == "OK") ? true: false;
+		if(!awsFlg) return;
 		var mntrFlg = (localStorage[Constants.Strage.MONITOR_FLG] == "ON") ? true : false;
 		if(!mntrFlg) return;
 		var useFlg =  (localStorage[Constants.WgdtSet.B_USE] == "ON") ? true : false;

@@ -1,6 +1,6 @@
 {
 	"name": "艦これタイマー連携ツール",
-	"version": "0.0.1",
+	"version": "0.0.4",
 	"description": "遠征の通知をiPhone版 艦これタイマーに送信するツールです。",
 	"icons": {
 		"128": "src/img/icon128.png"
