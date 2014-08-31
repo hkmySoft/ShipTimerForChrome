@@ -110,21 +110,22 @@ var ShipTimer = ShipTimer || {};
 	}
 	
 	/**
-	 * (遠征・入渠・建造)メッセージの生成
+	 * (遠征)メッセージの生成
 	 * @param {Object} typeId
 	 * @param {Object} deckId
 	 * @param {Object} key
-	 * @param {Object} label
 	 * @param {Object} startTime
-	 * @param {Object} endTime
 	 * @returns {*}
 	 * @public
 	*/
-	Apns.prototype.createMessage = function (typeId, deckId, key, label, startTime, endTime) {
+	Apns.prototype.createMessage = function (typeId, deckId, key, startTime, deckId1, key1, startTime1, deckId2, key2, startTime2) {
 		var message = {};
-		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"content-available\": 1}, \"type\":\"" + typeId +"\", \"deckId\":\"" + deckId +"\",\"key\":\"" + key +"\",\"label\":\"" + label +"\",\"startTime\":\"" + startTime +"\",\"endTime\":\"" + endTime +"\"}";
+		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"content-available\": 1,\"sound\" : \"\", \"priority\" : 10}, \"type\":\"" + typeId +"\", \"deckId\":\"" + deckId +"\",\"key\":\"" + key +"\",\"startTime\":\"" + startTime +"\",\"add1\":\"1\", \"deckId1\":\"" + deckId1 +"\",\"key1\":\"" + key1 +"\",\"startTime1\":\"" + startTime1 +"\",\"add2\":\"1\", \"deckId2\":\"" + deckId2 +"\",\"key2\":\"" + key2 +"\",\"startTime2\":\"" + startTime2 +"\"}";
 		// 共通メッセージ処理を実行
+		console.log(message);
 		this._createMessage(message);
+		// メッセージを保存
+		localStorage[Constants.SMI.SAVE_MESSAGE] = this.message;
 	}
 	/**
 	 * メッセージ処理の開始
@@ -135,6 +136,49 @@ var ShipTimer = ShipTimer || {};
 	Apns.prototype.forStart = function (callback) {
 		// メッセージのチェック
 		if(this.message == null) {
+			return;
+		}
+		
+		// 認証用設定値
+		var config = {
+			client_id: Constants.OAuthConst.CLIENT_ID,
+			client_secret: Constants.OAuthConst.CLIENT_SECRET,
+			api_scope: Constants.OAuthConst.API_SCOPE
+		}
+		
+		// OAuth認証生成
+		var google = new OAuth2('google', config);
+		
+		// AWS認証生成
+		google.authorize(function() {
+			var access_token = google.getAccessToken();
+
+			AWS.config.credentials = new AWS.WebIdentityCredentials({
+				RoleArn: Constants.AwsConst.IAM_ROLE,
+				WebIdentityToken: access_token
+			});
+			AWS.config.region = Constants.AwsConst.CONFIG_REGION;
+			
+			// AWS_SNSを起動
+			this.sns = new AWS.SNS();
+			
+			// エンドポイントを作成した後メッセージを送信
+			this._createEndPoint(callback);
+		}.bind(this), false);
+	}
+	/**
+	 * 遠征メッセージ処理の開始
+	 * @returns {*}
+	 * @param {Object} callback
+	 * @public
+	*/
+	Apns.prototype.forSendMissionMessage = function (callback) {
+		console.log("exec!");
+		// メッセージを取得
+		this.message = localStorage[Constants.SMI.SAVE_MESSAGE];
+		
+		// メッセージのチェック
+		if (typeof this.message == "undefined") {
 			return;
 		}
 		

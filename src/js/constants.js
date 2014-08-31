@@ -55,5 +55,19 @@ var Constants = {
 		CLIENT_SECRET: "47vDh2PG73aaFXM7Ir8zuODw",
 		API_SCOPE : "https://www.googleapis.com/auth/userinfo.profile",
 		XML_URL : "https://www.googleapis.com/oauth2/v1/tokeninfo"
+	},
+	SMI : {
+		D2: "SaveMissionDeck_1",
+		K2: "SaveMissionKey_1",
+		T2: "SaveMissionTime_1",
+		D3: "SaveMissionDeck_2",
+		K3: "SaveMissionKey_2",
+		T3: "SaveMissionTime_2",
+		D4: "SaveMissionDeck_3",
+		K4: "SaveMissionKey_3",
+		T4: "SaveMissionTime_3",
+		INTARVAL : 30000,
+		SEND_TIME : "SendMissionTime",
+		SAVE_MESSAGE : "SendMissionMessage"
 	}
 };
