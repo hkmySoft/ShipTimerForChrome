@@ -120,7 +120,7 @@ var ShipTimer = ShipTimer || {};
 	*/
 	Apns.prototype.createMessage = function (typeId, deckId, key, startTime, deckId1, key1, startTime1, deckId2, key2, startTime2) {
 		var message = {};
-		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"content-available\": 1,\"sound\" : \"\", \"priority\" : 10}, \"type\":\"" + typeId +"\", \"deckId\":\"" + deckId +"\",\"key\":\"" + key +"\",\"startTime\":\"" + startTime +"\",\"add1\":\"1\", \"deckId1\":\"" + deckId1 +"\",\"key1\":\"" + key1 +"\",\"startTime1\":\"" + startTime1 +"\",\"add2\":\"1\", \"deckId2\":\"" + deckId2 +"\",\"key2\":\"" + key2 +"\",\"startTime2\":\"" + startTime2 +"\"}";
+		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"content-available\":1,\"sound\":\"\"},\"type\":\"" + typeId +"\",\"deckId\":\"" + deckId +"\",\"key\":\"" + key +"\",\"startTime\":\"" + startTime +"\",\"add1\":\"1\", \"deckId1\":\"" + deckId1 +"\",\"key1\":\"" + key1 +"\",\"startTime1\":\"" + startTime1 +"\",\"add2\":\"1\", \"deckId2\":\"" + deckId2 +"\",\"key2\":\"" + key2 +"\",\"startTime2\":\"" + startTime2 +"\"}";
 		// 共通メッセージ処理を実行
 		console.log(message);
 		this._createMessage(message);
