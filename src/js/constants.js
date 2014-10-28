@@ -7,7 +7,7 @@ var Constants = {
 		DEFAULT_TOOL_TIP: "艦これタイマー連携ツール Beta",
 		OAUTH_ERR_TOOL_TIP: "クリックしてGoogleとの連携を許可してください",
 		DEVICE_ERR_TOOL_TIP: "iPhoneを認証してください。",
-		DEVICE_ERR_MESSAGE: "iPhoneの認証に失敗しました。\n先にiPhone版「艦これタイマー」から\n認証を行ってください。\nまたは、下記の「使い方を見る」動画をご覧ください。",
+		DEVICE_ERR_MESSAGE: "iPhoneの認証に失敗しました。\n先にiPhone版「艦これタイマー」から\n認証を行ってください。\nまた、下記の「使い方を見る」動画をご覧ください。",
 		WGDT_NOTHING_ERR_MESSAGE: "艦これウィジェットが見つかりません。\nChromeウェブストアからダウンロードして下さい。",
 		WGDT_CANCEL_ERR_MESSAGE: "データの要求を許可しない場合は\n艦これウィジェットの機能は使用できません。",
 		WGDT_SOME_ERR_MESSAGE: "何らかのエラーが発生したため、\n設定できませんでした。",
@@ -40,14 +40,14 @@ var Constants = {
 		B_ENSEI  : "Wgdt_Mission",
 		B_NYUKYO : "Wgdt_Nyukyo",
 		B_BUILD  : "Wgdt_CreateShip",
-		WGDT_ID  : "iachoklpnnjfgmldgelflgifhdaebnol",
+		WGDT_ID  : "eecngmillminbdldimjbknhakcljolpk",
 		DL_URL   : "https://chrome.google.com/webstore/detail/%E8%89%A6%E3%81%93%E3%82%8C%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88/iachoklpnnjfgmldgelflgifhdaebnol?hl=ja"
 	},
 	AwsConst : {
 		CONFIG_REGION: 'us-east-1',
 		IAM_ROLE: "arn:aws:iam::348287904183:role/KanColleRole",
-		PLAT_APP : "arn:aws:sns:us-east-1:348287904183:app/APNS/ShipTimer",
-		APS_NAME : "APNS",
+		PLAT_APP : "arn:aws:sns:us-east-1:348287904183:app/APNS_SANDBOX/ShipTimer_SANDBOX",
+		APS_NAME : "APNS_SANDBOX",
 		DB_TABLE : "DevTokTbl"
 	},
 	OAuthConst : {

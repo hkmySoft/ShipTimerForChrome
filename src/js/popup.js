@@ -290,6 +290,7 @@ $('#widgetUse').click(function() {
 			} else {
 				switch(response.status){
 					case 200:		// 正常
+					case 304:		// 許可
 					case 409:		// 登録済み
 						// 表示を切り替える
 						wghtUseBtnChange();
