@@ -153,6 +153,8 @@ var config = {
 	
 	// ウィジェットをDLするボタンを初期化
 	$('#wgtDLbtn').tooltip();
+	$('#widgetSetting').tooltip();
+	
 	
 	// YOUTUBE表示機能を初期化
 	$("#YTLink").attr('data-video-id',Constants.Hanyou.YT_URL);
@@ -388,7 +390,7 @@ function wghtUseBtnChange() {
 		$('#shipTimerWindow').removeClass('hide');
 		$('#shipTimerNotWindow').addClass('hide');
 
-		// 使用フラグをONにする
+		// 使用フラグをOFFにする
 		localStorage[Constants.WgdtSet.B_USE] = "OFF";
 	}
 
@@ -484,7 +486,7 @@ function settingDevice(arg1) {
 	// エンドポイント作成&登録メッセージ送信処理を実施
 	var apns = new ShipTimer.Apns();
 	apns.createSettingMessage();
-	apns.forStart(afterRegistButton.bind(this, btn));
+	apns.forSettingStart(afterRegistButton.bind(this, btn));
 
 }
 
