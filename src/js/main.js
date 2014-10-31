@@ -18,7 +18,7 @@ var ShipTimer = ShipTimer || {};
 	// == Message監視リスナー登録 ==
 	// メッセージを受信した時
 	chrome.runtime.onMessageExternal.addListener(function(message, sender) {
-		if (sender.id == Constants.WgdtSet.WGDT_ID) {
+		if (sender.id == Constants.WdgtSet.WDGT_ID) {
 			dispatcher.eat_m(message)
 		}
 	});
