@@ -62,7 +62,7 @@ var ShipTimer = ShipTimer || {};
 		
 		// ドックIDから取得先を決定
 		switch (deckId) {
-			case "1":
+			case 1:
 				dKey1 = Constants.SNY.D1;
 				sKey1 = Constants.SNY.S1;
 				eKey1 = Constants.SNY.E1;
@@ -76,7 +76,7 @@ var ShipTimer = ShipTimer || {};
 				sKey4 = Constants.SNY.S4;
 				eKey4 = Constants.SNY.E4;
 				break;
-			case "2":
+			case 2:
 				dKey1 = Constants.SNY.D2;
 				sKey1 = Constants.SNY.S2;
 				eKey1 = Constants.SNY.E2;
@@ -90,7 +90,7 @@ var ShipTimer = ShipTimer || {};
 				sKey4 = Constants.SNY.S4;
 				eKey4 = Constants.SNY.E4;
 				break;
-			case "3":
+			case 3:
 				dKey1 = Constants.SNY.D3;
 				sKey1 = Constants.SNY.S3;
 				eKey1 = Constants.SNY.E3;
@@ -104,10 +104,10 @@ var ShipTimer = ShipTimer || {};
 				sKey4 = Constants.SNY.S4;
 				eKey4 = Constants.SNY.E4;
 				break;
-			case "4":
-				dKey1 = Constants.SNY.D3;
-				sKey1 = Constants.SNY.S3;
-				eKey1 = Constants.SNY.E3;
+			case 4:
+				dKey1 = Constants.SNY.D4;
+				sKey1 = Constants.SNY.S4;
+				eKey1 = Constants.SNY.E4;
 				dKey2 = Constants.SNY.D1;
 				sKey2 = Constants.SNY.S1;
 				eKey2 = Constants.SNY.E1;
@@ -172,23 +172,23 @@ var ShipTimer = ShipTimer || {};
 									deck_1,
 									"",
 									"",
-									startTime_1,
-									endTime_1,
+									start_1,
+									end_1,
 									deck_2,
 									"",
 									"",
-									startTime_2,
-									endTime_2,
+									start_2,
+									end_2,
 									deck_3,
 									"",
 									"",
-									startTime_3,
-									endTime_3,
+									start_3,
+									end_3,
 									deck_4,
 									"",
 									"",
-									startTime_4,
-									endTime_4
+									start_4,
+									end_4
 								);
 		
 		

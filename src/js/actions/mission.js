@@ -214,7 +214,7 @@ var ShipTimer = ShipTimer || {};
 		
 		// 艦隊IDから取得先を決定
 		switch (deckId) {
-			case "2":
+			case 2:
 				dKey1 = Constants.SMI.D2;
 				kKey1 = Constants.SMI.K2;
 				lKey1 = Constants.SMI.L2;
@@ -231,7 +231,7 @@ var ShipTimer = ShipTimer || {};
 				sKey3 = Constants.SMI.T4;
 				eKey3 = Constants.SMI.E4;
 				break;
-			case "3":
+			case 3:
 				dKey1 = Constants.SMI.D3;
 				kKey1 = Constants.SMI.K3;
 				lKey1 = Constants.SMI.L3;
@@ -248,7 +248,7 @@ var ShipTimer = ShipTimer || {};
 				sKey3 = Constants.SMI.T4;
 				eKey3 = Constants.SMI.E4;
 				break;
-			case "4":
+			case 4:
 				dKey1 = Constants.SMI.D4;
 				kKey1 = Constants.SMI.K4;
 				lKey1 = Constants.SMI.L4;
@@ -317,18 +317,18 @@ var ShipTimer = ShipTimer || {};
 									deck_1,
 									key_1,
 									label_1,
-									startTime_1,
-									endTime_1,
+									start_1,
+									end_1,
 									deck_2,
 									key_2,
 									label_2,
-									startTime_2,
-									endTime_2,
+									start_2,
+									end_2,
 									deck_3,
 									key_3,
 									label_3,
-									startTime_3,
-									endTime_3
+									start_3,
+									end_3
 								);
 		
 		
