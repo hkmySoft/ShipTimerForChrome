@@ -31,7 +31,6 @@ var ShipTimer = ShipTimer || {};
 		this.mission.forStartMessage(params);
 	};
 	Action.prototype.forHospitalStartMessage = function(params){
-		console.log("HOSPITAL IN");
 		var awsFlg = (localStorage[Constants.Strage.AWS_SNS_COMP_KEY] == "OK") ? true: false;
 		if(!awsFlg) return;
 		var mntrFlg = (localStorage[Constants.Strage.MONITOR_FLG] == "ON") ? true : false;

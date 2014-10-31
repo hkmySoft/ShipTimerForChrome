@@ -40,14 +40,14 @@ var Constants = {
 		B_ENSEI  : "Wdgt_Mission",
 		B_NYUKYO : "Wdgt_Nyukyo",
 		B_BUILD  : "Wdgt_CreateShip",
-		WDGT_ID  : "eecngmillminbdldimjbknhakcljolpk",
+		WDGT_ID  : "iachoklpnnjfgmldgelflgifhdaebnol",
 		DL_URL   : "https://chrome.google.com/webstore/detail/%E8%89%A6%E3%81%93%E3%82%8C%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88/iachoklpnnjfgmldgelflgifhdaebnol?hl=ja"
 	},
 	AwsConst : {
 		CONFIG_REGION: 'us-east-1',
 		IAM_ROLE: "arn:aws:iam::348287904183:role/KanColleRole",
-		PLAT_APP : "arn:aws:sns:us-east-1:348287904183:app/APNS_SANDBOX/ShipTimer_SANDBOX",
-		APS_NAME : "APNS_SANDBOX",
+		PLAT_APP : "arn:aws:sns:us-east-1:348287904183:app/APNS/ShipTimer",
+		APS_NAME : "APNS",
 		DB_TABLE : "DevTokTbl"
 	},
 	OAuthConst : {
