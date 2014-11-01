@@ -173,6 +173,9 @@ $('#deviceRegistBtn').click(function() {
 	btn.button('loading');
 	btn.removeClass('btn-danger');
 	btn.addClass('btn-success');
+	var ErArea = $('#ErrorMessage');
+	ErArea.html("");
+	ErArea.addClass('hide');
 
 
 	// == 認証関連 ==
@@ -269,6 +272,9 @@ $('#deviceReleaseBtn').click(function() {
 $('#widgetUse').click(function() {
 	// 自分自身を取得する
 	var btn = $(this);
+	var ErArea = $('#ErrorMessage');
+	ErArea.html("");
+	ErArea.addClass('hide');
 	btn.button('reset');
 	btn.removeClass('btn-danger');
 	
@@ -287,8 +293,8 @@ $('#widgetUse').click(function() {
 				btn.removeClass('btn-default');
 				btn.addClass('btn-danger');
 				// エラーメッセージ
-				alert(Constants.Hanyou.WDGT_NOTHING_ERR_MESSAGE);
-				
+				ErArea.html(Constants.Hanyou.WDGT_NOTHING_ERR_MESSAGE);
+				ErArea.removeClass('hide');
 			} else {
 				switch(response.status){
 					case 201:		// 正常
@@ -303,7 +309,8 @@ $('#widgetUse').click(function() {
 						btn.removeClass('btn-default');
 						btn.addClass('btn-danger');
 						// エラーメッセージ
-						alert(Constants.Hanyou.WDGT_CANCEL_ERR_MESSAGE);
+						ErArea.html(Constants.Hanyou.WDGT_CANCEL_ERR_MESSAGE);
+						ErArea.removeClass('hide');
 						break;
 					default:
 						// "登録"ボタンを"エラー"にする
@@ -312,7 +319,8 @@ $('#widgetUse').click(function() {
 						btn.removeClass('btn-default');
 						btn.addClass('btn-danger');
 						// エラーメッセージ
-						alert(Constants.Hanyou.WDGT_SOME_ERR_MESSAGE);
+						ErArea.html(Constants.Hanyou.WDGT_SOME_ERR_MESSAGE);
+						ErArea.removeClass('hide');
 						break;
 				}
 			}
@@ -504,7 +512,8 @@ function afterRegistButton(arg1) {
 			
 			// デバイスエラー
 			Util.badge.Device_Error();
-			alert(Constants.Hanyou.DEVICE_ERR_MESSAGE);
+			$('#ErrorMessage').html(Constants.Hanyou.DEVICE_ERR_MESSAGE);
+			$('#ErrorMessage').removeClass('hide');
 	} else {
 			// "登録"ボタンを非表示にする
 			btn.addClass('hide');

@@ -106,8 +106,8 @@ OAuth2.prototype.openAuthorizationCodePopup = function(callback, flg) {
   if (flg) {
     crwWidth = 500;
     crwHeight = 500;
-    crwLeft = (screen.availWidth - crwWidth) / 2;
-    crwTop = (screen.availHeight - crwHeight) / 2;
+    crwLeft = Math.round((screen.availWidth - crwWidth) / 2);
+    crwTop = Math.round((screen.availHeight - crwHeight) / 2);
   } else {
     crwWidth = 1;
     crwHeight = 1;

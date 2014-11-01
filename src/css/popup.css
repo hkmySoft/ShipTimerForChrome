@@ -49,3 +49,12 @@ body {
 .carousel-control.right {
   background-image:initial;
 }
+.alert-area {
+	padding-top: 3px;
+	padding-left: 5px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+
+}
