@@ -44,7 +44,7 @@
 				<div class="panel-body">
 					<div role="form" id="deviceForm">
 						<div class="form-group  margin-off">
-							<div><label for="inputDeviceId">自動遠征タイマーセット</label>　<button id="deviceReleaseBtn" data-loading-text="解除中..." class="btn btn-danger btn-xs hide">認証解除</buton></div>
+							<div><label for="inputDeviceId">自動タイマーセット</label>　<button id="deviceReleaseBtn" data-loading-text="解除中..." class="btn btn-danger btn-xs hide">認証解除</buton></div>
 							<fieldset id="inputDeviceIdField" class="fieldset-plus">
 								<button id="deviceRegistBtn" data-loading-text="認証中..." data-error-text="認証失敗" class="btn btn-success btn-block margin-top-addm">デバイス認証</buton>
 								<button id="monitorBtn" class="btn btn-info btn-block hide">起動中</buton>
@@ -56,13 +56,13 @@
 								<button id="shipTimerWindow" class="btn btn-default btn-block">艦これ起動</buton>
 							</fieldset>
 							<br/>
-							<div class="hide">
-								<div><label class="small">環境設定</label></div>
+							<div>
+								<div><label id="widgetSetting" class="small" rel="tooltip" data-placement="right" title="艦これタイマー Ver11.0より可" >環境設定</label></div>
 								<table class="table margin-off">
 									<thead>
 										<tr>
 											<th colspan="3">艦これウィジェット　<span id="wgtDLbtn"  class="glyphicon glyphicon-download cursor-point" rel="tooltip" title="ChromeウェブストアからDL"></span></th>
-											<th><button id="widgetUse" data-error-text="設定失敗 " type="button" class="btn btn-default btn-xs btn-block">使用しない</button></th>
+											<th><button id="widgetUse" data-error-text="&nbsp;設定失敗&nbsp;" type="button" class="btn btn-default btn-xs btn-block">使用しない</button></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -82,10 +82,7 @@
 											<td><button id="buildBtn" type="button" class="btn btn-default btn-xs btn-block">OFF</button></td>
 										</tr>
 										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
+											<td colspan="4" style="padding:0px;"><div id="ErrorMessage" class="small alert alert-danger alert-area hide"></div></td>
 										</tr>
 									</tbody>
 								</table>

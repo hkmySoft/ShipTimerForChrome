@@ -68,7 +68,7 @@ var config = {
 	// 設定値によるボタン初期化
 	// 使用フラグを取得
 	var useFlg = false;
-	useFlg = (localStorage[Constants.WgdtSet.B_USE] == "ON") ? true : false;
+	useFlg = (localStorage[Constants.WdgtSet.B_USE] == "ON") ? true : false;
 	if(useFlg){
 		
 		$('#widgetUse').addClass('btn-success');
@@ -116,7 +116,7 @@ var config = {
 	// 使用しないの時は表示ON固定
 	if (useFlg) {
 		// 遠征使用フラグを取得
-		var chkFlg = (localStorage[Constants.WgdtSet.B_ENSEI] == "ON") ? true : false;
+		var chkFlg = (localStorage[Constants.WdgtSet.B_ENSEI] == "ON") ? true : false;
 		if(chkFlg){
 			$('#missionBtn').addClass('btn-primary');
 			$('#missionBtn').removeClass('btn-default');
@@ -128,7 +128,7 @@ var config = {
 		}
 	}
 	// 入渠使用フラグを取得
-	chkFlg = (localStorage[Constants.WgdtSet.B_NYUKYO] == "ON") ? true : false;
+	chkFlg = (localStorage[Constants.WdgtSet.B_NYUKYO] == "ON") ? true : false;
 	if(chkFlg){
 		$('#nyukyoBtn').addClass('btn-primary');
 		$('#nyukyoBtn').removeClass('btn-default');
@@ -140,7 +140,7 @@ var config = {
 	}
 	
 	// 建造使用フラグを取得
-	chkFlg = (localStorage[Constants.WgdtSet.B_BUILD] == "ON") ? true : false;
+	chkFlg = (localStorage[Constants.WdgtSet.B_BUILD] == "ON") ? true : false;
 	if(chkFlg){
 		$('#buildBtn').addClass('btn-primary');
 		$('#buildBtn').removeClass('btn-default');
@@ -153,6 +153,8 @@ var config = {
 	
 	// ウィジェットをDLするボタンを初期化
 	$('#wgtDLbtn').tooltip();
+	$('#widgetSetting').tooltip();
+	
 	
 	// YOUTUBE表示機能を初期化
 	$("#YTLink").attr('data-video-id',Constants.Hanyou.YT_URL);
@@ -171,6 +173,9 @@ $('#deviceRegistBtn').click(function() {
 	btn.button('loading');
 	btn.removeClass('btn-danger');
 	btn.addClass('btn-success');
+	var ErArea = $('#ErrorMessage');
+	ErArea.html("");
+	ErArea.addClass('hide');
 
 
 	// == 認証関連 ==
@@ -267,17 +272,20 @@ $('#deviceReleaseBtn').click(function() {
 $('#widgetUse').click(function() {
 	// 自分自身を取得する
 	var btn = $(this);
+	var ErArea = $('#ErrorMessage');
+	ErArea.html("");
+	ErArea.addClass('hide');
 	btn.button('reset');
 	btn.removeClass('btn-danger');
 	
 	// 使用フラグを取得
-	var chkFlg = (localStorage[Constants.WgdtSet.B_USE] == "ON") ? true : false;
+	var chkFlg = (localStorage[Constants.WdgtSet.B_USE] == "ON") ? true : false;
 	if (chkFlg) {
 		// 表示を切り替える
 		wghtUseBtnChange();
 	} else {
 		// メッセージを送信して認証する
-		chrome.runtime.sendMessage(Constants.WgdtSet.WGDT_ID, {path:"/api/subscribe"}, function(response) {
+		chrome.runtime.sendMessage(Constants.WdgtSet.WDGT_ID, {path:"/api/subscribe"}, function(response) {
 			if(typeof response == 'undefined') {
 				// "登録"ボタンを"エラー"にする
 				btn.button('error');
@@ -285,12 +293,12 @@ $('#widgetUse').click(function() {
 				btn.removeClass('btn-default');
 				btn.addClass('btn-danger');
 				// エラーメッセージ
-				alert(Constants.Hanyou.WGDT_NOTHING_ERR_MESSAGE);
-				
+				ErArea.html(Constants.Hanyou.WDGT_NOTHING_ERR_MESSAGE);
+				ErArea.removeClass('hide');
 			} else {
 				switch(response.status){
-					case 200:		// 正常
-					case 409:		// 登録済み
+					case 201:		// 正常
+					case 304:		// 登録済み
 						// 表示を切り替える
 						wghtUseBtnChange();
 						break;
@@ -301,7 +309,8 @@ $('#widgetUse').click(function() {
 						btn.removeClass('btn-default');
 						btn.addClass('btn-danger');
 						// エラーメッセージ
-						alert(Constants.Hanyou.WGDT_CANCEL_ERR_MESSAGE);
+						ErArea.html(Constants.Hanyou.WDGT_CANCEL_ERR_MESSAGE);
+						ErArea.removeClass('hide');
 						break;
 					default:
 						// "登録"ボタンを"エラー"にする
@@ -310,7 +319,8 @@ $('#widgetUse').click(function() {
 						btn.removeClass('btn-default');
 						btn.addClass('btn-danger');
 						// エラーメッセージ
-						alert(Constants.Hanyou.WGDT_SOME_ERR_MESSAGE);
+						ErArea.html(Constants.Hanyou.WDGT_SOME_ERR_MESSAGE);
+						ErArea.removeClass('hide');
 						break;
 				}
 			}
@@ -325,7 +335,7 @@ $('#widgetUse').click(function() {
 function wghtUseBtnChange() {
 
 	// 使用フラグを取得
-	var chkFlg = (localStorage[Constants.WgdtSet.B_USE] == "ON") ? true : false;
+	var chkFlg = (localStorage[Constants.WdgtSet.B_USE] == "ON") ? true : false;
 	if(!chkFlg){
 		// 「使用する」に変更する
 		$('#widgetUse').addClass('btn-success');
@@ -335,7 +345,7 @@ function wghtUseBtnChange() {
 		// 遠征列のボタンを活性化
 		$('#missionBtn').removeAttr('disabled');
 		// 使用フラグを取得
-		var enseiFlg = (localStorage[Constants.WgdtSet.B_ENSEI] == "ON") ? true : false;
+		var enseiFlg = (localStorage[Constants.WdgtSet.B_ENSEI] == "ON") ? true : false;
 		if(enseiFlg){
 			// ONの場合	
 			$('#missionBtn').addClass('btn-primary');
@@ -362,7 +372,7 @@ function wghtUseBtnChange() {
 		$('#shipTimerNotWindow').tooltip();
 		
 		// 使用フラグをONにする
-		localStorage[Constants.WgdtSet.B_USE] = "ON";
+		localStorage[Constants.WdgtSet.B_USE] = "ON";
 	} else {
 		// 「使用しない」に変更する
 		$('#widgetUse').removeClass('btn-success');
@@ -387,8 +397,8 @@ function wghtUseBtnChange() {
 		$('#shipTimerWindow').removeClass('hide');
 		$('#shipTimerNotWindow').addClass('hide');
 
-		// 使用フラグをONにする
-		localStorage[Constants.WgdtSet.B_USE] = "OFF";
+		// 使用フラグをOFFにする
+		localStorage[Constants.WdgtSet.B_USE] = "OFF";
 	}
 
 }
@@ -399,7 +409,7 @@ $('#missionBtn').click(function() {
 	var btn = $(this);
 	
 	// 使用フラグを取得
-	var chkFlg = (localStorage[Constants.WgdtSet.B_ENSEI] == "ON") ? true : false;
+	var chkFlg = (localStorage[Constants.WdgtSet.B_ENSEI] == "ON") ? true : false;
 	if(!chkFlg){
 		
 		btn.addClass('btn-primary');
@@ -407,7 +417,7 @@ $('#missionBtn').click(function() {
 		btn.text("ON");
 		
 		// 使用フラグをONにする
-		localStorage[Constants.WgdtSet.B_ENSEI] = "ON";
+		localStorage[Constants.WdgtSet.B_ENSEI] = "ON";
 	} else {
 		
 		btn.removeClass('btn-primary');
@@ -415,7 +425,7 @@ $('#missionBtn').click(function() {
 		btn.text("OFF");
 
 		// 使用フラグをONにする
-		localStorage[Constants.WgdtSet.B_ENSEI] = "OFF";
+		localStorage[Constants.WdgtSet.B_ENSEI] = "OFF";
 	}
 
 });
@@ -425,7 +435,7 @@ $('#nyukyoBtn').click(function() {
 	var btn = $(this);
 	
 	// 使用フラグを取得
-	var chkFlg = (localStorage[Constants.WgdtSet.B_NYUKYO] == "ON") ? true : false;
+	var chkFlg = (localStorage[Constants.WdgtSet.B_NYUKYO] == "ON") ? true : false;
 	if(!chkFlg){
 		
 		btn.addClass('btn-primary');
@@ -433,7 +443,7 @@ $('#nyukyoBtn').click(function() {
 		btn.text("ON");
 		
 		// 使用フラグをONにする
-		localStorage[Constants.WgdtSet.B_NYUKYO] = "ON";
+		localStorage[Constants.WdgtSet.B_NYUKYO] = "ON";
 	} else {
 		
 		btn.removeClass('btn-primary');
@@ -441,7 +451,7 @@ $('#nyukyoBtn').click(function() {
 		btn.text("OFF");
 
 		// 使用フラグをONにする
-		localStorage[Constants.WgdtSet.B_NYUKYO] = "OFF";
+		localStorage[Constants.WdgtSet.B_NYUKYO] = "OFF";
 	}
 });
 // 艦これウィジェット建造ボタン
@@ -450,7 +460,7 @@ $('#buildBtn').click(function() {
 	var btn = $(this);
 	
 	// 使用フラグを取得
-	var chkFlg = (localStorage[Constants.WgdtSet.B_BUILD] == "ON") ? true : false;
+	var chkFlg = (localStorage[Constants.WdgtSet.B_BUILD] == "ON") ? true : false;
 	if(!chkFlg){
 		
 		btn.addClass('btn-primary');
@@ -458,7 +468,7 @@ $('#buildBtn').click(function() {
 		btn.text("ON");
 		
 		// 使用フラグをONにする
-		localStorage[Constants.WgdtSet.B_BUILD] = "ON";
+		localStorage[Constants.WdgtSet.B_BUILD] = "ON";
 	} else {
 		
 		btn.removeClass('btn-primary');
@@ -466,13 +476,13 @@ $('#buildBtn').click(function() {
 		btn.text("OFF");
 
 		// 使用フラグをONにする
-		localStorage[Constants.WgdtSet.B_BUILD] = "OFF";
+		localStorage[Constants.WdgtSet.B_BUILD] = "OFF";
 	}
 });
 
 // 艦これウィジェットDLボタン
 $('#wgtDLbtn').click(function() {
-	chrome.tabs.create({url:Constants.WgdtSet.DL_URL}, function(){});
+	chrome.tabs.create({url:Constants.WdgtSet.DL_URL}, function(){});
 });
 
 
@@ -483,7 +493,7 @@ function settingDevice(arg1) {
 	// エンドポイント作成&登録メッセージ送信処理を実施
 	var apns = new ShipTimer.Apns();
 	apns.createSettingMessage();
-	apns.forStart(afterRegistButton.bind(this, btn));
+	apns.forSettingStart(afterRegistButton.bind(this, btn));
 
 }
 
@@ -502,7 +512,8 @@ function afterRegistButton(arg1) {
 			
 			// デバイスエラー
 			Util.badge.Device_Error();
-			alert(Constants.Hanyou.DEVICE_ERR_MESSAGE);
+			$('#ErrorMessage').html(Constants.Hanyou.DEVICE_ERR_MESSAGE);
+			$('#ErrorMessage').removeClass('hide');
 	} else {
 			// "登録"ボタンを非表示にする
 			btn.addClass('hide');

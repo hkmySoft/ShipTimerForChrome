@@ -95,6 +95,7 @@ var ShipTimer = ShipTimer || {};
 		var messageJSON = JSON.stringify(message);
 		// JSON形式にフォーマットしたメッセージを設定
 		this.message = messageJSON;
+		console.log(message);
 	}
 	
 	/**
@@ -110,6 +111,7 @@ var ShipTimer = ShipTimer || {};
 	}
 	
 	/**
+	 * TODO 旧版のため移行予定
 	 * (遠征)メッセージの生成
 	 * @param {Object} typeId
 	 * @param {Object} deckId
@@ -122,18 +124,100 @@ var ShipTimer = ShipTimer || {};
 		var message = {};
 		message[Constants.AwsConst.APS_NAME] = "{\"aps\":{\"content-available\":1,\"sound\":\"\"},\"type\":\"" + typeId +"\",\"deckId\":\"" + deckId +"\",\"key\":\"" + key +"\",\"startTime\":\"" + startTime +"\",\"add1\":\"1\", \"deckId1\":\"" + deckId1 +"\",\"key1\":\"" + key1 +"\",\"startTime1\":\"" + startTime1 +"\",\"add2\":\"1\", \"deckId2\":\"" + deckId2 +"\",\"key2\":\"" + key2 +"\",\"startTime2\":\"" + startTime2 +"\"}";
 		// 共通メッセージ処理を実行
-		console.log(message);
 		this._createMessage(message);
 		// メッセージを保存
 		localStorage[Constants.SMI.SAVE_MESSAGE] = this.message;
 	}
 	/**
-	 * メッセージ処理の開始
+	 * (遠征・入渠・建造)メッセージの生成
+	 * @returns {*}
+	 * @public
+	*/
+	Apns.prototype.createSendMessage = function (	
+													saveKey,
+													typeId,
+													deck_1,
+													key_1,
+													label_1,
+													start_1,
+													end_1,
+													deck_2,
+													key_2,
+													label_2,
+													start_2,
+													end_2,
+													deck_3,
+													key_3,
+													label_3,
+													start_3,
+													end_3,
+													deck_4,
+													key_4,
+													label_4,
+													start_4,
+													end_4
+	) {
+		var message = {};
+		
+		// 未定義処理
+		deck_1	= (typeof deck_1 == "undefined") ? "" : deck_1;
+		deck_2	= (typeof deck_2 == "undefined") ? "" : deck_2;
+		deck_3	= (typeof deck_3 == "undefined") ? "" : deck_3;
+		deck_4	= (typeof deck_4 == "undefined") ? "" : deck_4;
+		key_1	= (typeof key_1 == "undefined") ? "" : key_1;
+		key_2	= (typeof key_2 == "undefined") ? "" : key_2;
+		key_3	= (typeof key_3 == "undefined") ? "" : key_3;
+		key_4	= (typeof key_4 == "undefined") ? "" : key_4;
+		label_1	= (typeof label_1 == "undefined") ? "" : label_1;
+		label_2	= (typeof label_2 == "undefined") ? "" : label_2;
+		label_3	= (typeof label_3 == "undefined") ? "" : label_3;
+		label_4	= (typeof label_4 == "undefined") ? "" : label_4;
+		start_1	= (typeof start_1 == "undefined") ? "" : start_1;
+		start_2	= (typeof start_2 == "undefined") ? "" : start_2;
+		start_3	= (typeof start_3 == "undefined") ? "" : start_3;
+		start_4	= (typeof start_4 == "undefined") ? "" : start_4;
+		end_1	= (typeof end_1 == "undefined") ? "" : end_1;
+		end_2	= (typeof end_2 == "undefined") ? "" : end_2;
+		end_3	= (typeof end_3 == "undefined") ? "" : end_3;
+		end_4	= (typeof end_4 == "undefined") ? "" : end_4;
+		
+		// メッセージ作成
+		message[Constants.AwsConst.APS_NAME] = "{\
+													\"aps\":{\"content-available\":1, \"sound\":\"\", \"priority\":10},\
+													\"ty\":\""	+	typeId	+	"\",\
+													\"d1\":\""	+	deck_1	+	"\",\
+													\"k1\":\""	+	key_1	+	"\",\
+													\"l1\":\""	+	label_1	+	"\",\
+													\"sT1\":\""	+	start_1	+	"\",\
+													\"eT1\":\""	+	end_1	+	"\",\
+													\"d2\":\""	+	deck_2	+	"\",\
+													\"k2\":\""	+	key_2	+	"\",\
+													\"l2\":\""	+	label_2	+	"\",\
+													\"sT2\":\""	+	start_2	+	"\",\
+													\"eT2\":\""	+	end_2	+	"\",\
+													\"d3\":\""	+	deck_3	+	"\",\
+													\"k3\":\""	+	key_3	+	"\",\
+													\"l3\":\""	+	label_3	+	"\",\
+													\"sT3\":\""	+	start_3	+	"\",\
+													\"eT3\":\""	+	end_3	+	"\",\
+													\"d4\":\""	+	deck_4	+	"\",\
+													\"k4\":\""	+	key_4	+	"\",\
+													\"l4\":\""	+	label_4	+	"\",\
+													\"sT4\":\""	+	start_4	+	"\",\
+													\"eT4\":\""	+	end_4	+	"\"\
+												}";
+		// 共通メッセージ処理を実行
+		this._createMessage(message);
+		// メッセージを保存
+		localStorage[saveKey] = this.message;
+	}
+	/**
+	 * (認証)メッセージ処理の開始
 	 * @returns {*}
 	 * @param {Object} callback
 	 * @public
 	*/
-	Apns.prototype.forStart = function (callback) {
+	Apns.prototype.forSettingStart = function (callback) {
 		// メッセージのチェック
 		if(this.message == null) {
 			return;
@@ -167,15 +251,16 @@ var ShipTimer = ShipTimer || {};
 		}.bind(this), false);
 	}
 	/**
-	 * 遠征メッセージ処理の開始
+	 * (遠征・入渠・建造)メッセージ処理の開始
 	 * @returns {*}
+	 * @param {Object} key
 	 * @param {Object} callback
 	 * @public
 	*/
-	Apns.prototype.forSendMissionMessage = function (callback) {
+	Apns.prototype.forMessageStart = function (key, callback) {
 		console.log("exec!");
 		// メッセージを取得
-		this.message = localStorage[Constants.SMI.SAVE_MESSAGE];
+		this.message = localStorage[key];
 		
 		// メッセージのチェック
 		if (typeof this.message == "undefined") {
