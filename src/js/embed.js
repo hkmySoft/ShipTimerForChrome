@@ -61,7 +61,6 @@ $(function(){
 
 		// 背景:黒
 		$('body').css('background-color', 'black');
-
 		// リサイズ
 		$embedElement.css('position', 'absolute');
 		$embedElement.css('top', '50%');

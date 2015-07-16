@@ -5,7 +5,7 @@
  (function(){
 	'use strict';
 	setTimeout(function(){
-		var iframeUrl = document.getElementsByTagName('iframe').item(0).getAttribute('src');
+		var iframeUrl = document.getElementById("game_frame").getAttribute('src');
 		location.replace(iframeUrl);
 	}, 300);
 })();
