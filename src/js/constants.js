@@ -46,7 +46,7 @@ var Constants = {
 	AwsConst : {
 		CONFIG_REGION: 'us-east-1',
 		IAM_ROLE: "arn:aws:iam::348287904183:role/KanColleRole",
-		PLAT_APP : "arn:aws:sns:us-east-1:348287904183:app/APNS_SANDBOX/ShipTimer",
+		PLAT_APP : "arn:aws:sns:us-east-1:348287904183:app/APNS_SANDBOX/ShipTimer_SANDBOX",
 		APS_NAME : "APNS_SANDBOX",
 		DB_TABLE : "DevTokTbl"
 	},
