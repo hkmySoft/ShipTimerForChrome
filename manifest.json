@@ -33,7 +33,7 @@
 	},
 	"content_scripts": [
 		{
-			"matches": ["http://www.google.com/robots.txt*"],
+			"matches": ["https://www.google.com/robots.txt*"],
 			"js": ["src/lib/oauth2/oauth2_inject.js"],
 				"run_at": "document_start"
 		},
