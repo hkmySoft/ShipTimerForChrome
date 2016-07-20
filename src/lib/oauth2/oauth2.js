@@ -23,10 +23,10 @@
  * @param {String} config Alternatively, OAuth2.FINISH for the finish flow
  */
 var OAuth2 = function(adapterName, config) {
-  this.adapterName = adapterName;
+  this.adapterName = 'google';
   var that = this;
-  OAuth2.loadAdapter(adapterName, function() {
-    that.adapter = OAuth2.adapters[adapterName];
+  OAuth2.loadAdapter('google', function() {
+    that.adapter = OAuth2.adapters['google'];
     if (config == OAuth2.FINISH) {
       that.finishAuth();
     } else if (config) {
@@ -316,7 +316,7 @@ OAuth2.prototype.clear = function(name) {
     delete obj[name];
     this.setSource(obj);
   } else {
-    delete localStorage['oauth2_' + this.adapterName];
+    delete localStorage['oauth2_google'];
   }
 };
 
@@ -326,7 +326,7 @@ OAuth2.prototype.clear = function(name) {
  * @return {String} The source JSON string.
  */
 OAuth2.prototype.getSource = function() {
-  return localStorage['oauth2_' + this.adapterName];
+  return localStorage['oauth2_google'];
 };
 
 /**
@@ -341,7 +341,7 @@ OAuth2.prototype.setSource = function(source) {
   if (typeof source !== 'string') {
     source = JSON.stringify(source);
   }
-  localStorage['oauth2_' + this.adapterName] = source;
+  localStorage['oauth2_google'] = source;
 };
 
 /**
@@ -372,14 +372,14 @@ OAuth2.prototype.getConfig = function() {
  */
 OAuth2.loadAdapter = function(adapterName, callback) {
   // If it's already loaded, don't load it again
-  if (OAuth2.adapters[adapterName]) {
+  if (OAuth2.adapters['google']) {
     callback();
     return;
   }
   var head = document.querySelector('head');
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src = '/src/lib/oauth2/adapters/' + adapterName + '.js';
+  script.src = '/src/lib/oauth2/adapters/google.js'; /* + adapterName + '.js';*/
   script.addEventListener('load', function() {
     callback();
   });
