@@ -1,6 +1,6 @@
 {
 	"name": "艦これタイマー連携ツール",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "遠征・入渠・建造完了時間をiPhone版 艦これタイマーに送信するツールです。",
 	"icons": {
 		"128": "src/img/icon128.png"
@@ -33,7 +33,7 @@
 	},
 	"content_scripts": [
 		{
-			"matches": ["https://www.google.com/robots.txt*"],
+			"matches": ["https://www.google.com/robots.txt*","http://www.google.com/robots.txt*"],
 			"js": ["src/lib/oauth2/oauth2_inject.js"],
 				"run_at": "document_start"
 		},
