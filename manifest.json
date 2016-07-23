@@ -52,7 +52,7 @@
 				"http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/?shiptimer=true*"
 			],
 			"js" : [
-                "src/js/transfer.js"
+				"src/js/transfer.js"
 			]
 		}
 
