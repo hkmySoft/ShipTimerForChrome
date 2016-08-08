@@ -8,8 +8,15 @@
 	"manifest_version":2,
 	"permissions": [
 		"webRequest",
+		"identity",
 		"<all_urls>"
 	],
+	"oauth2": {
+		"client_id": "596857451248-ngkep1tu00dlrb95gej77h8nkh85s012.apps.googleusercontent.com",
+		"scopes": [
+			"https://www.googleapis.com/auth/userinfo.profile"
+		]
+	},
 	"browser_action": {
 		"default_title": "艦これタイマー連携ツール",
 		"default_icon": "src/img/icon128.png",
@@ -27,7 +34,7 @@
 			"src/js/util.js",
 			"src/js/apns.js",
 			"src/lib/oauth2/oauth2.js",
-			"src/lib/aws-sdk-2.0.0-rc13.min.js",
+			"src/lib/aws-sdk-2.4.13.min.js",
 			"src/js/main.js"
 		]
 	},

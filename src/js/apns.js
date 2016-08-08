@@ -15,7 +15,7 @@ var ShipTimer = ShipTimer || {};
 		this.sns = null;
 		this.endpoint = localStorage[Constants.Strage.LOCAL_ENDPOINT];
 	};
-	
+
 	/**
 	 * 端末のエンドポイントを作成する
 	 * @param {Object} callback
@@ -42,7 +42,7 @@ var ShipTimer = ShipTimer || {};
 			}
 		}.bind(this));
 	}
-	
+
 	/**
 	 * 端末のエンドポイントを削除する
 	 * @returns {*}
@@ -53,14 +53,14 @@ var ShipTimer = ShipTimer || {};
 		var params = {
 			EndpointArn: endpointArn,
 		};
-		this.sns.deleteEndpoint(params, function(err, data){ 
+		this.sns.deleteEndpoint(params, function(err, data){
 			// ローカルからエンドポイントを削除
 			localStorage.removeItem(Constants.Strage.LOCAL_ENDPOINT);
 			callback();
 		}.bind(this));
 	}
-	
-	
+
+
 	/**
 	 * メッセージを送信する
 	 * @param {Object} endpointArn
@@ -85,7 +85,7 @@ var ShipTimer = ShipTimer || {};
 			}
 		}.bind(this));
 	}
-	
+
 	/**
 	 * (共通)メッセージの生成
 	 * @returns {*}
@@ -97,7 +97,7 @@ var ShipTimer = ShipTimer || {};
 		this.message = messageJSON;
 		console.log(message);
 	}
-	
+
 	/**
 	 * (認証)メッセージの生成
 	 * @returns {*}
@@ -109,7 +109,7 @@ var ShipTimer = ShipTimer || {};
 		// 共通メッセージ処理を実行
 		this._createMessage(message);
 	}
-	
+
 	/**
 	 * TODO 旧版のため移行予定
 	 * (遠征)メッセージの生成
@@ -133,7 +133,7 @@ var ShipTimer = ShipTimer || {};
 	 * @returns {*}
 	 * @public
 	*/
-	Apns.prototype.createSendMessage = function (	
+	Apns.prototype.createSendMessage = function (
 													saveKey,
 													typeId,
 													deck_1,
@@ -158,7 +158,7 @@ var ShipTimer = ShipTimer || {};
 													end_4
 	) {
 		var message = {};
-		
+
 		// 未定義処理
 		deck_1	= (typeof deck_1 == "undefined") ? "" : deck_1;
 		deck_2	= (typeof deck_2 == "undefined") ? "" : deck_2;
@@ -180,7 +180,7 @@ var ShipTimer = ShipTimer || {};
 		end_2	= (typeof end_2 == "undefined") ? "" : end_2;
 		end_3	= (typeof end_3 == "undefined") ? "" : end_3;
 		end_4	= (typeof end_4 == "undefined") ? "" : end_4;
-		
+
 		// メッセージ作成
 		message[Constants.AwsConst.APS_NAME] = "{\
 													\"aps\":{\"content-available\":1, \"sound\":\"\", \"priority\":10},\
@@ -222,33 +222,15 @@ var ShipTimer = ShipTimer || {};
 		if(this.message == null) {
 			return;
 		}
-		
-		// 認証用設定値
-		var config = {
-			client_id: Constants.OAuthConst.CLIENT_ID,
-			client_secret: Constants.OAuthConst.CLIENT_SECRET,
-			api_scope: Constants.OAuthConst.API_SCOPE
-		}
-		
-		// OAuth認証生成
-		var google = new OAuth2('google', config);
-		
-		// AWS認証生成
-		google.authorize(function() {
-			var access_token = google.getAccessToken();
-
-			AWS.config.credentials = new AWS.WebIdentityCredentials({
-				RoleArn: Constants.AwsConst.IAM_ROLE,
-				WebIdentityToken: access_token
-			});
-			AWS.config.region = Constants.AwsConst.CONFIG_REGION;
-			
-			// AWS_SNSを起動
-			this.sns = new AWS.SNS();
-			
-			// エンドポイントを作成した後メッセージを送信
-			this._createEndPoint(callback);
-		}.bind(this), false);
+		// AWSCognito認証設定
+		AWS.config.region = Constants.AwsConst.CONFIG_REGION;
+		AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+			IdentityPoolId: Constants.AwsConst.COGNITO_ROLE
+		});
+		// AWS_SNSを起動
+		this.sns = new AWS.SNS();
+		// エンドポイントを作成した後メッセージを送信
+		this._createEndPoint(callback);
 	}
 	/**
 	 * (遠征・入渠・建造)メッセージ処理の開始
@@ -261,38 +243,21 @@ var ShipTimer = ShipTimer || {};
 		console.log("exec!");
 		// メッセージを取得
 		this.message = localStorage[key];
-		
+
 		// メッセージのチェック
 		if (typeof this.message == "undefined") {
 			return;
 		}
-		
-		// 認証用設定値
-		var config = {
-			client_id: Constants.OAuthConst.CLIENT_ID,
-			client_secret: Constants.OAuthConst.CLIENT_SECRET,
-			api_scope: Constants.OAuthConst.API_SCOPE
-		}
-		
-		// OAuth認証生成
-		var google = new OAuth2('google', config);
-		
-		// AWS認証生成
-		google.authorize(function() {
-			var access_token = google.getAccessToken();
+		// AWSCognito認証設定
+		AWS.config.region = Constants.AwsConst.CONFIG_REGION;
+		AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+			IdentityPoolId: Constants.AwsConst.COGNITO_ROLE
+		});
+		// AWS_SNSを起動
+		this.sns = new AWS.SNS();
 
-			AWS.config.credentials = new AWS.WebIdentityCredentials({
-				RoleArn: Constants.AwsConst.IAM_ROLE,
-				WebIdentityToken: access_token
-			});
-			AWS.config.region = Constants.AwsConst.CONFIG_REGION;
-			
-			// AWS_SNSを起動
-			this.sns = new AWS.SNS();
-			
-			// エンドポイントを作成した後メッセージを送信
-			this._createEndPoint(callback);
-		}.bind(this), false);
+		// エンドポイントを作成した後メッセージを送信
+		this._createEndPoint(callback);
 	}
 	/**
 	 * デバイス解除処理の開始
@@ -311,34 +276,19 @@ var ShipTimer = ShipTimer || {};
 		if(this.endpoint.length == 0) {
 			return;
 		}
-		
-		// 認証用設定値
-		var config = {
-			client_id: Constants.OAuthConst.CLIENT_ID,
-			client_secret: Constants.OAuthConst.CLIENT_SECRET,
-			api_scope: Constants.OAuthConst.API_SCOPE
-		}
-		
-		// OAuth認証生成
-		var google = new OAuth2('google', config);
-		
-		// AWS認証生成
-		google.authorize(function() {
-			var access_token = google.getAccessToken();
+		// AWSCognito認証設定
+		AWS.config.region = Constants.AwsConst.CONFIG_REGION;
+		AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+			IdentityPoolId: Constants.AwsConst.COGNITO_ROLE
+		});
 
-			AWS.config.credentials = new AWS.WebIdentityCredentials({
-				RoleArn: Constants.AwsConst.IAM_ROLE,
-				WebIdentityToken: access_token
-			});
-			AWS.config.region = Constants.AwsConst.CONFIG_REGION;
-			
-			// AWS_SNSを起動
-			this.sns = new AWS.SNS();
-			
-			// エンドポイントを削除
-			this._deleteEndPoint(this.endpoint, callback);
-		}.bind(this), false);
+		// AWS_SNSを起動
+		this.sns = new AWS.SNS();
+
+		// エンドポイントを削除
+		this._deleteEndPoint(this.endpoint, callback);
+		
 	}
-	
-	
+
+
 })();
