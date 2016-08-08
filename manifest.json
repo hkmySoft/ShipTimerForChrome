@@ -33,17 +33,11 @@
 			"src/js/dispatcher.js",
 			"src/js/util.js",
 			"src/js/apns.js",
-			"src/lib/oauth2/oauth2.js",
 			"src/lib/aws-sdk-2.4.13.min.js",
 			"src/js/main.js"
 		]
 	},
 	"content_scripts": [
-		{
-			"matches": ["https://www.google.com/robots.txt*","http://www.google.com/robots.txt*"],
-			"js": ["src/lib/oauth2/oauth2_inject.js"],
-				"run_at": "document_start"
-		},
 		{
 			"matches" : [
 				"http://osapi.dmm.com/gadgets/ifr?*"
@@ -63,8 +57,5 @@
 			]
 		}
 
-	],
-	"web_accessible_resources" : [
-		"src/lib/oauth2/oauth2.html"
 	]
 }

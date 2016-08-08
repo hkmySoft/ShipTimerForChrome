@@ -14,7 +14,6 @@
 	<script src="../lib/jquery.min.js"></script>
 	<script src="../lib/jquery-video-lightning.js"></script>
 	<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../lib/oauth2/oauth2.js" charset="UTF-8"></script>
 	<script src="../lib/aws-sdk-2.4.13.min.js" charset="UTF-8"></script>
 	<!-- JavaScript File -->
 	<script src="../js/constants.js" charset="UTF-8"></script>
@@ -33,7 +32,7 @@
 					<ul class="media-list margin-off">
 						<li class="media">
 							<div class="pull-right" href="#">
-								<img class="media-object" src="../img/ikari.png">
+								<button type="button" class="btn btn-link"><img class="media-object" src="../img/ikari.png"></button>
 							</div>
 							<div class="media-body">
 								<h3 class="panel-title media-heading">艦これタイマー連携ツール β</h3>
@@ -44,7 +43,7 @@
 				<div class="panel-body">
 					<div role="form" id="deviceForm">
 						<div class="form-group  margin-off">
-							<div><label for="inputDeviceId">自動タイマーセット</label>　<button id="deviceReleaseBtn" data-loading-text="解除中..." class="btn btn-danger btn-xs hide">認証解除</buton></div>
+							<div><label for="inputDeviceId">自動タイマーセット</label>　<button id="deviceReleaseBtn" data-loading-text="解除中..." class="btn btn-danger btn-xs hide" rel="tooltip" title="Google認証は解除されないので、そこまで解除する場合は、Googleアカウントの「アカウントに接続されているアプリ」より実施してください。" data-placement="bottom">認証解除</button></div>
 							<fieldset id="inputDeviceIdField" class="fieldset-plus">
 								<button id="deviceRegistBtn" data-loading-text="認証中..." data-error-text="認証失敗" class="btn btn-success btn-block margin-top-addm">デバイス認証</buton>
 								<button id="monitorBtn" class="btn btn-info btn-block hide">起動中</buton>

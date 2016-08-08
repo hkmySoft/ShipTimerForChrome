@@ -142,10 +142,10 @@ $(function() {
 		$('#buildBtn').text("OFF");
 	}
 
-	// ウィジェットをDLするボタンを初期化
+	// ツールチップの設定
 	$('#wgtDLbtn').tooltip();
 	$('#widgetSetting').tooltip();
-
+	$('#deviceReleaseBtn').tooltip();
 
 	// YOUTUBE表示機能を初期化
 	$("#YTLink").attr('data-video-id',Constants.Hanyou.YT_URL);
@@ -155,7 +155,9 @@ $(function() {
 	});
 
 })();
-
+$(document).ready( function(){
+    $('#shipTimerWindow').focus();
+});
 
 // 登録ボタン押下処理
 $('#deviceRegistBtn').click(function() {
