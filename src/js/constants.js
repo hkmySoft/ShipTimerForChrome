@@ -45,15 +45,12 @@ var Constants = {
 	},
 	AwsConst : {
 		CONFIG_REGION: 'us-east-1',
-		IAM_ROLE: "arn:aws:iam::348287904183:role/KanColleRole",
+		COGNITO_ROLE: 'us-east-1:affc356e-7b3a-4ea0-b471-d4682b912387',
 		PLAT_APP : "arn:aws:sns:us-east-1:348287904183:app/APNS/ShipTimer",
 		APS_NAME : "APNS",
 		DB_TABLE : "DevTokTbl"
 	},
 	OAuthConst : {
-		CLIENT_ID: "596857451248-ink6lpctnh0h6h2ttkoljvp7punvij1n.apps.googleusercontent.com",
-		CLIENT_SECRET: "47vDh2PG73aaFXM7Ir8zuODw",
-		API_SCOPE : "https://www.googleapis.com/auth/userinfo.profile",
 		XML_URL : "https://www.googleapis.com/oauth2/v1/tokeninfo"
 	},
 	SMI : {

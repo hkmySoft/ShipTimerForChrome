@@ -10,9 +10,9 @@ var ShipTimer = ShipTimer || {};
 		this.device_id = null;
 		this.id_token = token;
 		this.DB = null;
-		this.xmlHttpUrl = Constants.OAuthConst.XML_URL + '?id_token=' + encodeURIComponent(this.id_token);
+		this.xmlHttpUrl = Constants.OAuthConst.XML_URL + '?access_token=' + encodeURIComponent(this.id_token);
 	};
-	
+
 	/**
 	 * 端末のデバイスIDを取得する
 	 * @param {Object} callback
@@ -30,14 +30,13 @@ var ShipTimer = ShipTimer || {};
 				// ユーザーIDを取得
 				var user_info = JSON.parse(xhr.response);
 				this.user_id = user_info.user_id;
-				
-				// AWSの設定
-				AWS.config.credentials = new AWS.WebIdentityCredentials({
-					RoleArn: Constants.AwsConst.IAM_ROLE,
-					WebIdentityToken: this.id_token
-				});
+
+				// AWSCognito認証設定
 				AWS.config.region = Constants.AwsConst.CONFIG_REGION;
-				
+				AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+					IdentityPoolId: Constants.AwsConst.COGNITO_ROLE
+				});
+
 				// AWS_DynamoDBを起動
 				this.DB = new AWS.DynamoDB();
 				// 値を取り出す
@@ -56,15 +55,15 @@ var ShipTimer = ShipTimer || {};
 						}
 						callback();
 					}
-				);			
-				
+				);
+
 			} else {
 				console.log(xhr.status);
-			}	
+			}
 		}.bind(this);
 		xhr.send();
 	}
-	
-	
-	
+
+
+
 })();
