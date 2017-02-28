@@ -15,8 +15,10 @@ var ShipTimer = ShipTimer || {};
 		if(!awsFlg) return;
 		var mntrFlg = (localStorage[Constants.Strage.MONITOR_FLG] == "ON") ? true : false;
 		if(!mntrFlg) return;
+/* 2017/03/01 艦これウィジェット連携解除
 		var useFlg =  (localStorage[Constants.WdgtSet.B_USE] == "ON") ? true : false;
 		if(useFlg) return;
+*/
 		this.mission.forStart(params);
 	};
 	Action.prototype.forMissionStartMessage = function(params){
@@ -28,7 +30,9 @@ var ShipTimer = ShipTimer || {};
 		if(!useFlg) return;
 		var chkFlg =  (localStorage[Constants.WdgtSet.B_ENSEI] == "ON") ? true : false;
 		if(!chkFlg) return;
+/* 2017/03/01 艦これウィジェット連携解除
 		this.mission.forStartMessage(params);
+*/
 	};
 	Action.prototype.forHospitalStartMessage = function(params){
 		var awsFlg = (localStorage[Constants.Strage.AWS_SNS_COMP_KEY] == "OK") ? true: false;
@@ -39,7 +43,9 @@ var ShipTimer = ShipTimer || {};
 		if(!useFlg) return;
 		var chkFlg =  (localStorage[Constants.WdgtSet.B_NYUKYO] == "ON") ? true : false;
 		if(!chkFlg) return;
+/* 2017/03/01 艦これウィジェット連携解除
 		this.hospital.forStartMessage(params);
+*/
 	};
 	Action.prototype.forBuildStartMessage = function(params){
 		var awsFlg = (localStorage[Constants.Strage.AWS_SNS_COMP_KEY] == "OK") ? true: false;
@@ -50,6 +56,8 @@ var ShipTimer = ShipTimer || {};
 		if(!useFlg) return;
 		var chkFlg =  (localStorage[Constants.WdgtSet.B_BUILD] == "ON") ? true : false;
 		if(!chkFlg) return;
+/* 2017/03/01 艦これウィジェット連携解除
 		this.build.forStartMessage(params);
+*/
 	};
 })();
