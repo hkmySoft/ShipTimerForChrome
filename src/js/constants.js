@@ -12,7 +12,7 @@ var Constants = {
 		WDGT_CANCEL_ERR_MESSAGE: "データの要求を許可しない場合は<br />艦これウィジェットの機能は使用できません。",
 		WDGT_SOME_ERR_MESSAGE: "何らかのエラーが発生したため、<br />設定できませんでした。",
 		MAX_REPEAT: 10,
-		YT_URL : "y-8w6m771C9yg"
+		YT_URL : "y-s6k0J5fXJr8"
 	},
 	StWin : {
 		KANCOLLE: "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/",

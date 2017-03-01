@@ -60,10 +60,6 @@ $(function() {
 	// 使用フラグを取得
 	var useFlg = false;
 	useFlg = (localStorage[Constants.WdgtSet.B_USE] == "ON") ? true : false;
-	// 2017/03/01 艦これウィジェットとの連携解除 START
-	useFlg = false;
-	localStorage[Constants.WdgtSet.B_USE] = "OFF";
-	// END
 	if(useFlg){
 
 		$('#widgetUse').addClass('btn-success');
@@ -88,10 +84,7 @@ $(function() {
 
 		$('#widgetUse').removeClass('btn-success');
 		$('#widgetUse').addClass('btn-default');
-		//$('#widgetUse').text("使用しない");
-		$('#widgetUse').text("使用不可");
-		$('#widgetUse').tooltip();
-
+		$('#widgetUse').text("使用しない");
 
 		// 遠征列のボタンを非活性化
 		$('#missionBtn').attr('disabled','disabled');
@@ -99,19 +92,18 @@ $(function() {
 		$('#missionBtn').removeClass('btn-default');
 		$('#missionBtn').text("ON");
 
-/* 2017/03/01 艦これウィジェットとの連携解除 START
 		// 入渠列をフェードアウト
 		$('#trNyukyo').removeClass('in');
 
 		// 建造列をフェードアウト
 		$('#trBuild').removeClass('in');
-*/
+
 		// 起動ボタンの注釈削除
 		$('#shipTimerWindow').removeClass('hide');
 		$('#shipTimerNotWindow').addClass('hide');
 
 	}
-/* 2017/03/01 艦これウィジェットとの連携解除 START
+
 	// 使用しないの時は表示ON固定
 	if (useFlg) {
 		// 遠征使用フラグを取得
@@ -149,7 +141,7 @@ $(function() {
 		$('#buildBtn').addClass('btn-default');
 		$('#buildBtn').text("OFF");
 	}
-*/
+
 	// ツールチップの設定
 	$('#wgtDLbtn').tooltip();
 	$('#widgetSetting').tooltip();
@@ -245,7 +237,7 @@ $('#deviceReleaseBtn').click(function() {
 		}
 	}
 });
-/* 2017/03/01 艦これウィジェットとの連携解除 START
+
 // 艦これウィジェット使用ボタン
 $('#widgetUse').click(function() {
 	// 自分自身を取得する
@@ -457,11 +449,11 @@ $('#buildBtn').click(function() {
 		localStorage[Constants.WdgtSet.B_BUILD] = "OFF";
 	}
 });
+
 // 艦これウィジェットDLボタン
 $('#wgtDLbtn').click(function() {
 	chrome.tabs.create({url:Constants.WdgtSet.DL_URL}, function(){});
 });
-*/
 
 
 // デバイス登録処理
