@@ -8,9 +8,11 @@ var Constants = {
 		OAUTH_ERR_TOOL_TIP: "クリックしてGoogleとの連携を許可してください",
 		DEVICE_ERR_TOOL_TIP: "iPhoneを認証してください。",
 		DEVICE_ERR_MESSAGE: "iPhoneの認証に失敗しました。<br />先にiPhone版「艦これタイマー」から認証を行ってください。<br />また、下記の「使い方を見る」動画をご覧ください。",
-		WDGT_NOTHING_ERR_MESSAGE: "艦これウィジェットが見つかりません。<br />Chromeウェブストアからダウンロードして下さい。",
+		WDGT_DAIALOG_CHECK_MESSAGE:"<br />「これ以上このページでダイアログボックスを生成しない。」に<br />チェックを入れてしまった場合はChromeを再起動してください。",
+		WDGT_NOTHING_ERR_MESSAGE: "艦これウィジェットが見つかりません。<br />Chromeウェブストアからダウンロードして下さい。" ,
 		WDGT_CANCEL_ERR_MESSAGE: "データの要求を許可しない場合は<br />艦これウィジェットの機能は使用できません。",
 		WDGT_SOME_ERR_MESSAGE: "何らかのエラーが発生したため、<br />設定できませんでした。",
+		WDGT_WAITING_MESAGE:"応答を待っています。<br />連携ツールを再起動（ボタンを押し直し）て下さい。",
 		MAX_REPEAT: 10,
 		YT_URL : "y-s6k0J5fXJr8"
 	},
@@ -37,10 +39,12 @@ var Constants = {
 	},
 	WdgtSet : {
 		B_USE    : "Wdgt_Use",
+		B_DEV_USE: "Wdgt_Dev_Use",
 		B_ENSEI  : "Wdgt_Mission",
 		B_NYUKYO : "Wdgt_Nyukyo",
 		B_BUILD  : "Wdgt_CreateShip",
 		WDGT_ID  : "iachoklpnnjfgmldgelflgifhdaebnol",
+		WDGT_DEV_ID : "egkgleinehaapbpijnlpbllfeejjpceb",
 		DL_URL   : "https://chrome.google.com/webstore/detail/%E8%89%A6%E3%81%93%E3%82%8C%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88/iachoklpnnjfgmldgelflgifhdaebnol?hl=ja"
 	},
 	AwsConst : {
