@@ -142,9 +142,22 @@ $(function() {
 		$('#buildBtn').text("OFF");
 	}
 
+	// 開発版使用フラグを取得
+	var useDevFlg = false;
+	useDevFlg = (localStorage[Constants.WdgtSet.B_DEV_USE] == "ON") ? true : false;
+	if(useDevFlg){
+		$('#widgetDevUse').addClass('btn-info');
+		$('#widgetDevUse').removeClass('btn-default');
+		$('#widgetDevUse').text("レ");
+	} else {
+		$('#widgetDevUse').removeClass('btn-info');
+		$('#widgetDevUse').addClass('btn-default');
+		$('#widgetDevUse').text("ー");
+	}
+
+
 	// ツールチップの設定
 	$('#wgtDLbtn').tooltip();
-	$('#widgetSetting').tooltip();
 	$('#deviceReleaseBtn').tooltip();
 
 	// YOUTUBE表示機能を初期化
@@ -156,7 +169,7 @@ $(function() {
 
 })();
 $(document).ready( function(){
-    $('#shipTimerWindow').focus();
+	$('#shipTimerWindow').focus();
 });
 
 // 登録ボタン押下処理
@@ -255,50 +268,109 @@ $('#widgetUse').click(function() {
 		wghtUseBtnChange();
 	} else {
 		// メッセージを送信して認証する
-		chrome.runtime.sendMessage(Constants.WdgtSet.WDGT_ID, {path:"/api/subscribe"}, function(response) {
-			if(typeof response == 'undefined') {
-				// "登録"ボタンを"エラー"にする
-				btn.button('error');
-				// 赤色に変更
-				btn.removeClass('btn-default');
-				btn.addClass('btn-danger');
-				// エラーメッセージ
-				ErArea.html(Constants.Hanyou.WDGT_NOTHING_ERR_MESSAGE);
-				ErArea.removeClass('hide');
+		// 開発中のV2対応
+		var setWdgtId = Constants.WdgtSet.WDGT_ID;
+		var chkDevFlg = false;
+		chkDevFlg = (localStorage[Constants.WdgtSet.B_DEV_USE] == "ON") ? true : false;
+		if (chkDevFlg) {
+			// V2のIDに切り替える
+			setWdgtId = Constants.WdgtSet.WDGT_DEV_ID;
+		}
+		chrome.runtime.getPlatformInfo( function(info) {
+		 	if(info.os == "win") {
+				// 使用OSがWinの場合
+				chrome.runtime.sendMessage(setWdgtId, {path:"/api/subscribe"}, function(response) {
+					if(typeof response == 'undefined') {
+						if(btn.text() == "使用する　") {
+							btn.text("通信中..");
+							// エラーメッセージ
+							ErArea.html(Constants.Hanyou.WDGT_WAITING_MESAGE + Constants.Hanyou.WDGT_DAIALOG_CHECK_MESSAGE);
+							ErArea.removeClass('hide');
+
+					} else {
+						// エラーメッセージ
+						ErArea.html(Constants.Hanyou.WDGT_NOTHING_ERR_MESSAGE + Constants.Hanyou.WDGT_DAIALOG_CHECK_MESSAGE);
+						ErArea.removeClass('hide');
+					}
+				} else {
+					switch(response.status){
+						case 201:		// 正常
+						case 304:		// 登録済み
+							// 表示を切り替える
+							wghtUseBtnChange();
+							break;
+						case 403:		// 不許可
+							// "登録"ボタンを"エラー"にする
+							btn.button('error');
+							// 赤色に変更
+							btn.removeClass('btn-default');
+							btn.addClass('btn-danger');
+							// エラーメッセージ
+							ErArea.html(Constants.Hanyou.WDGT_CANCEL_ERR_MESSAGE + Constants.Hanyou.WDGT_DAIALOG_CHECK_MESSAGE);
+							ErArea.removeClass('hide');
+							break;
+						default:
+							// "登録"ボタンを"エラー"にする
+							btn.button('error');
+							// 赤色に変更
+							btn.removeClass('btn-default');
+							btn.addClass('btn-danger');
+							// エラーメッセージ
+							ErArea.html(Constants.Hanyou.WDGT_SOME_ERR_MESSAGE + Constants.Hanyou.WDGT_DAIALOG_CHECK_MESSAGE);
+							ErArea.removeClass('hide');
+							break;
+						}
+					}
+				}.bind(this));
 			} else {
-				switch(response.status){
-					case 201:		// 正常
-					case 304:		// 登録済み
-						// 表示を切り替える
-						wghtUseBtnChange();
-						break;
-					case 403:		// 不許可
-						// "登録"ボタンを"エラー"にする
-						btn.button('error');
-						// 赤色に変更
-						btn.removeClass('btn-default');
-						btn.addClass('btn-danger');
-						// エラーメッセージ
-						ErArea.html(Constants.Hanyou.WDGT_CANCEL_ERR_MESSAGE);
-						ErArea.removeClass('hide');
-						break;
-					default:
-						// "登録"ボタンを"エラー"にする
-						btn.button('error');
-						// 赤色に変更
-						btn.removeClass('btn-default');
-						btn.addClass('btn-danger');
-						// エラーメッセージ
-						ErArea.html(Constants.Hanyou.WDGT_SOME_ERR_MESSAGE);
-						ErArea.removeClass('hide');
-						break;
-				}
+				// 使用OSがWin以外
+				chrome.runtime.sendMessage({ type:Constants.WdgtSet.B_USE, wdgt_id:setWdgtId }, function(response){
+					if(typeof response == 'undefined') {
+						if(btn.text() == "使用する　") {
+							btn.text("通信中..");
+							// エラーメッセージ
+							ErArea.html(Constants.Hanyou.WDGT_WAITING_MESAGE + Constants.Hanyou.WDGT_DAIALOG_CHECK_MESSAGE);
+							ErArea.removeClass('hide');
+
+						} else {
+							// エラーメッセージ
+							ErArea.html(Constants.Hanyou.WDGT_NOTHING_ERR_MESSAGE + Constants.Hanyou.WDGT_DAIALOG_CHECK_MESSAGE);
+							ErArea.removeClass('hide');
+						}
+					} else {
+						switch(response.status){
+							case 201:		// 正常
+							case 304:		// 登録済み
+								// 表示を切り替える
+								wghtUseBtnChange();
+								break;
+							case 403:		// 不許可
+								// "登録"ボタンを"エラー"にする
+								btn.button('error');
+								// 赤色に変更
+								btn.removeClass('btn-default');
+								btn.addClass('btn-danger');
+								// エラーメッセージ
+								ErArea.html(Constants.Hanyou.WDGT_CANCEL_ERR_MESSAGE + Constants.Hanyou.WDGT_DAIALOG_CHECK_MESSAGE);
+								ErArea.removeClass('hide');
+								break;
+							default:
+								// "登録"ボタンを"エラー"にする
+								btn.button('error');
+								// 赤色に変更
+								btn.removeClass('btn-default');
+								btn.addClass('btn-danger');
+								// エラーメッセージ
+								ErArea.html(Constants.Hanyou.WDGT_SOME_ERR_MESSAGE + Constants.Hanyou.WDGT_DAIALOG_CHECK_MESSAGE);
+								ErArea.removeClass('hide');
+								break;
+						}
+					}
+				}.bind(this));
 			}
 		}.bind(this));
+
 	}
-
-
-
 });
 
 // 艦これウィジェット使用切り替え
@@ -372,6 +444,35 @@ function wghtUseBtnChange() {
 	}
 
 }
+
+
+// 艦これウィジェットV2開発使用ボタン
+$('#widgetDevUse').click(function() {
+	// 自分自身を取得する
+	var btn = $(this);
+
+	// 使用フラグを取得
+	var chkFlg = (localStorage[Constants.WdgtSet.B_DEV_USE] == "ON") ? true : false;
+	if(!chkFlg){
+
+		btn.addClass('btn-info');
+		btn.removeClass('btn-default');
+		btn.text("レ");
+
+		// 使用フラグをONにする
+		localStorage[Constants.WdgtSet.B_DEV_USE] = "ON";
+	} else {
+		btn.removeClass('btn-info');
+		btn.addClass('btn-default');
+		btn.text("ー");
+
+		// 使用フラグをONにする
+		localStorage[Constants.WdgtSet.B_DEV_USE] = "OFF";
+	}
+	// 一旦艦これウィジェットをOFFにする。
+	localStorage[Constants.WdgtSet.B_USE] = "ON";
+	wghtUseBtnChange();
+});
 
 // 艦これウィジェット遠征ボタン
 $('#missionBtn').click(function() {
